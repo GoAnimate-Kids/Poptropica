@@ -1,0 +1,135 @@
+<iframe id="html5game" srcdoc="
+    <style>
+       body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 540px; /* Set iframe height */
+            margin: 0;
+            padding: 0;
+        }
+        #login-form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center; /* Centers the inputs and button horizontally */
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 260px; /* Set width smaller to fit the 960px container */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            margin-top: 10px;
+            height: 400px; /* Fixed height to accommodate centered content */
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        #login-button {
+            background-color: #91D23A;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        #error-message {
+            color: red;
+            margin-top: 10px;
+            font-size: 12px;
+        }
+        .paragraph {
+            margin-top: 15px; /* Reduced space for compactness */
+            font-size: 12px; /* Smaller font for paragraph */
+        }
+        .paragraph a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .paragraph a:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+    <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js'></script> <!-- MD5 Hashing -->
+    
+    <form id='login-form' name='login' method='post' action='https://www.poptropica.com/cmg/play/?cmg_iframe=1' target='_self' style='text-align: center; vertical-align: middle;'>
+        <input type='text' id='username' name='login' placeholder='USERNAME' required><br>
+        <input type='password' id='password' name='password' placeholder='PASSWORD' required><br>
+        <input id='login-button' type='submit' value='LOG IN'>
+        <p id='error-message' style='color: red; display: none;'></p>
+        <!-- New account creation link -->
+        <div class='paragraph' style='text-align:center;'>
+            Don't have an account?<br>
+            <a href='/poptropica-create-account.html' target='_blank'>Start as New Player</a>
+        </div>
+    </form>
+
+    <script async>
+        $(document).ready(function() {
+            $('#login-form').submit(function() {
+                var username = $('#username').val();
+                var password = $('#password').val();
+                let errorMessage = $('#error-message');
+
+                // Hash the password using MD5
+                var hashedPassword = CryptoJS.MD5(password).toString();
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'https://corsproxy.io/?url=https://www.poptropica.com/login.php',
+                    data: {
+                        login: username,
+                        pass_hash: hashedPassword
+                    },
+                    dataType: 'text',
+                    success: function(res) {
+                        if (res.includes('ok')) {
+                            $('#login-form').off('submit').submit();
+                        } else {
+                            if (res.includes('wrongpass')) {
+                                errorMessage.text('Incorrect password');
+                            } else if (res.includes('nologin')) {
+                                errorMessage.text('User not found');
+                            }
+                            errorMessage.show();
+                        }
+                    },
+                    error: function() {
+                        errorMessage.text('An error occurred. Try again.');
+                        errorMessage.show();
+                    }
+                });
+
+                return false; // Prevents form submission unless login is successful
+            });
+        });
+" class="no-select" width="960px" height="540px" scrolling="no" marginwidth="0" vspace="0" frameborder="0" hspace="0" marginheight="0" allow="web-share; clipboard-read; clipboard-write" aria-label="Poptropica Game Content" tabindex="-1"></iframe>
+<script async>
+    const overrideURL = "https://raw.githubusercontent.com/GoAnimate-Kids/Poptropica/refs/heads/main/override.json";
+
+    fetch(overrideURL)
+      .then(res => res.json())
+      .then(json => {
+        const rules = json.data || json;
+        const originalOpen = XMLHttpRequest.prototype.open;
+
+        XMLHttpRequest.prototype.open = function (method, url) {
+          for (const rule of rules) {
+            if (rule.type === "redirect301" && url === rule.match) {
+              url = rule.replace;
+              break;
+            }
+          }
+          return originalOpen.call(this, method, url);
+        };
+      });
+</script>

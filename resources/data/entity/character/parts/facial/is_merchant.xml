@@ -1,0 +1,7 @@
+<part>
+	<id>is_merchant</id>
+	<type>facial</type>
+	<hide>
+		<part>hair</part>
+	</hide>
+</part>

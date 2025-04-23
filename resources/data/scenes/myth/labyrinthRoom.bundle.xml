@@ -1,0 +1,201 @@
+<merged>
+
+<file path="/hits.xml">
+		<hits>
+			<hit color="0xff6600" id="wall">
+				<component type="wall"/>
+			</hit>
+			<hit color="0xffcc00" id="ceiling">
+				<component type="ceiling"/>
+			</hit>
+			<hit color="0xA0D1C8" id="urn" platform="true">
+				<component type="platform"/>
+			</hit>
+			<hit color="0x996600" id="statue" platform="true">
+				<component type="platform"/>
+			</hit>
+			<hit color="0x00CCCC" id="stairs" platform="true">
+				<component type="platform"/>
+			</hit>
+			<hit id="baseGround" platform="true">
+				<component type="platform"/>
+			</hit>
+		</hits>
+	</file>
+
+<file path="/dialog.xml">
+		<dialogs>
+			<character id="player">
+				<statement id="intro" linkEntityId="minotaur" link="request_nose_ring">Uh...can I please have the ring in your nose?</statement>
+				<statement id="complete_labyrinth" linkEntityId="minotaur" link="easy">Sounds easy enough.</statement>
+				<statement id="snake_challenge" linkEntityId="minotaur">Snakes. Why did it have to be snakes?</statement>
+				<statement id="got_out" linkEntityId="minotaur" link="exit">Hey, look at me. I made it to the exit. Hee hee hah!</statement>
+				<statement id="cant_believe" linkEntityId="minotaur" link="askRing">So, can I have the ring now?</statement>
+				<statement id="gotItem" linkEntityId="minotaur" link="uncomfortable"> I suddenly feel uncomfortable owning something that lived in your nose.</statement>
+				<statement id="made_out" triggerEventArgs="made_it_out" triggerEvent="triggerEvent">Hey, look at me. I made it to the exit. Hee hee hah! </statement>
+			</character>
+			<character id="minotaur">
+				<statement linkEntityId="player" link="intro" triggerEventArgs="talked_with_minotaur" triggerEvent="completeEvent">I am the Minotaur. What are you doing here, shrimp?</statement>
+				<statement id="request_nose_ring" linkEntityId="player" link="complete_labyrinth">Hah! You'll never get it. Besides, I only grant favors to those who make it out of my labyrinth.</statement>
+				<statement id="easy" linkEntityId="player" link="snake_challenge"> I'll let you enter once you beat The Snake Challenge.</statement>
+				<statement event="snake_puzzle_complete">Proceed to the labyrinth.</statement>
+				<statement id="completed_labyrinth" event="completed_labyrinth" linkEntityId="player" link="cant_believe" triggerEventArgs="talked_again_with_minotaur" triggerEvent="completeEvent">Groan...I can't believe you did it with those tiny noodle legs.</statement>
+				<statement id="askRing" triggerEventArgs="minotaurRing" triggerEvent="giveItem" linkEntityId="player" link="gotItem">I suppose.</statement>
+				<statement id="uncomfortable" triggerEventArgs="finishConvo" triggerEvent="triggerEvent" linkEntityId="player">You'd better get out of here or I may eat you.</statement>
+				<statement event="hasItem_minotaurRing">Mortals get on my nerves. Go away or I just may eat you.</statement>
+				<statement event="hasItem_medalMythology">I'd like to eat you.</statement>
+			</character>
+		</dialogs>
+	</file>
+
+<file path="/npcs.xml">
+		<npcs>
+			<npc id="minotaur" questMarker="talked_with_brownSatyr,talked_with_minotaur">
+				<skin>
+					<gender>male</gender>
+					<skinColor>0x7b5c3e</skinColor>
+					<hairColor>0x7B5C3E</hairColor>
+					<mouth>6</mouth>
+					<marks>minotaur</marks>
+					<facial>minotaur</facial>
+					<shirt>minotaur</shirt>
+					<pants>1</pants>
+					<item>minotaur</item>
+					<overshirt>minotaur</overshirt>
+					<overpants>minotaur</overpants>
+					<eyeState>squint</eyeState>
+				</skin>
+				<position>
+					<x>1200</x>
+					<y>524</y>
+				</position>
+				<range>
+					<x>0</x>
+					<y>0</y>
+				</range>
+				<direction>right</direction>
+				<scale>.75</scale>
+			</npc>
+
+			<npc event="hasItem_minotaurRing" id="minotaur">
+				<skin>
+					<gender>male</gender>
+					<skinColor>0x7b5c3e</skinColor>
+					<hairColor>0x7B5C3E</hairColor>
+					<eyes></eyes>
+					<mouth>6</mouth>
+					<marks>minotaur</marks>
+					<facial>minotaur2</facial>
+					<shirt>minotaur</shirt>
+					<pants>1</pants>
+					<item>minotaur</item>
+					<overshirt>minotaur</overshirt>
+					<overpants>minotaur</overpants>
+					<lineColor></lineColor>
+					<eyeState>squint</eyeState>
+					<lineWidth></lineWidth>
+				</skin>
+			</npc>
+		</npcs>
+	</file>
+
+<file path="/sounds.xml">
+		<sounds>
+			<sound type="music">
+				<asset fade="true" exclusiveType="true" loop="true">ancient_temple.mp3</asset>
+			</sound>
+
+			<sound type="ambient">
+				<asset loop="true">eerie_wind.mp3</asset>
+			</sound>
+
+			<sound action="impact" type="effects">
+				<asset id="urn">ls_tile_verb_01.mp3, ls_tile_verb_02.mp3</asset>
+				<asset id="statue">ls_concrete_verb_01.mp3, fs_concrete_verb_02.mp3</asset>
+				<asset id="stairs">ls_concrete_verb_01.mp3, fs_concrete_verb_02.mp3</asset>
+				<asset id="baseGround">ls_concrete_verb_01.mp3, fs_concrete_verb_02.mp3</asset>
+			</sound>
+			<sound action="step" type="effects">
+				<asset id="urn">fs_tile_verb_01.mp3, fs_tile_verb_02.mp3, fs_tile_verb_03.mp3, fs_tile_verb_04.mp3</asset>
+				<asset id="statue">fs_concrete_verb_01.mp3, fs_concrete_02.mp3, fs_concrete_verb_03.mp3, fs_concrete_verb_04.mp3</asset>
+				<asset id="stairs">fs_concrete_verb_01.mp3, fs_concrete_02.mp3, fs_concrete_verb_03.mp3, fs_concrete_verb_04.mp3</asset>
+				<asset id="baseGround">fs_concrete_verb_01.mp3, fs_concrete_02.mp3, fs_concrete_verb_03.mp3, fs_concrete_verb_04.mp3</asset>
+			</sound>
+		</sounds>
+	</file>
+
+<file path="/scene.xml">
+		<scene>
+			<sceneType>default</sceneType>
+			<cameraLimits>
+				<left>0</left>
+				<top>10</top>
+				<right>2290</right>
+				<bottom>575</bottom>
+			</cameraLimits>
+			<bounds>
+				<left>0</left>
+				<top>10</top>
+				<right>2290</right>
+				<bottom>524</bottom>
+			</bounds>
+			<data>dialog.xml,doors.xml,npcs.xml,sounds.xml,hits.xml</data>
+			<assets>bundle.zip,interactive.zip</assets>
+			<absoluteFilePaths prependTypePath="true">scenes/myth/shared/sounds.xml, scenes/myth/shared/dialog.xml</absoluteFilePaths>
+			<layers>
+                <layer>
+                    <asset>background.zip</asset>
+                </layer>
+                <layer>
+                    <asset>bitmap_hits.zip</asset>
+                </layer>
+                <layer hit="true">
+                    <asset>interactive.zip</asset>
+                </layer>
+                <layer>
+                    <asset>foreground.zip</asset>
+                </layer>
+			</layers>
+			<player>
+				<defaultPosition>
+					<x>2197</x>
+					<y>359.6</y>
+				</defaultPosition>
+				<defaultDirection>left</defaultDirection>
+			</player>
+		</scene>
+	</file>
+
+<file path="/doors.xml">
+		<doors>
+			<door id="doorSphinx">
+				<scene>game.scenes.myth.sphinx.Sphinx</scene>
+				<x>486</x>
+				<y>2003.84</y>
+				<label>
+					<text>Exit</text>
+					<type>exit3D</type>
+					<offset>
+						<x>0</x>
+						<y>0</y>
+					</offset>
+				</label>
+			</door>
+
+			<door id="doorLabyrinth">
+				<scene>game.scenes.myth.labyrinth.Labyrinth</scene>
+				<x>214</x>
+				<y>526</y>
+				<label>
+					<text>Exit</text>
+					<type>exit3D</type>
+					<offset>
+						<x>0</x>
+						<y>0</y>
+					</offset>
+				</label>
+			</door>
+		</doors>
+	</file>
+
+</merged>

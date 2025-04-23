@@ -1,0 +1,49 @@
+<quests>
+	<quest id="test_quest">
+		<startEvent island="hub">start_amelias_quest</startEvent>
+		<completeEvent island="hub">complete_amelias_quest</completeEvent>
+		<startPopup>scenes/hub/ameliaHouse/start_amelia_cargo.zip</startPopup>
+		<completePopup>scenes/hub/ameliaHouse/end_amelia_cargo.zip</completePopup>
+		<rewards>7396</rewards>
+		<step id="step1">
+			<startEvent island="hub">start_amelias_quest</startEvent>
+			<completeEvent island="hub">got_cargo</completeEvent>
+		</step>
+	</quest>
+	<quest id="poptropica_quest">
+		<initEvent island="hub">has_home</initEvent>
+		<completeEvent island="hub">gotItem_medalTime</completeEvent>
+		<step id="step1">
+			<startEvent island="hub">start_poptropica_quest</startEvent>
+			<completeEvent island="carrot">gotItem_medalCarrot</completeEvent>
+		</step>
+		<step id="step2">
+			<startEvent island="carrot">gotItem_medalCarrot</startEvent>
+			<completeEvent island="myth">gotItem_medalMythology</completeEvent>
+		</step>
+		<step id="step3">
+			<startEvent island="myth">gotItem_medalMythology</startEvent>
+			<completeEvent island="arab1">gotItem_medal_arabian1</completeEvent>
+		</step>
+		<step id="step4">
+			<startEvent island="arab1">gotItem_medal_arabian1</startEvent>
+			<completeEvent island="con1">gotItem_medal_con1</completeEvent>
+		</step>
+		<step id="step5">
+			<startEvent island="con1">gotItem_medal_con1</startEvent>
+			<completeEvent island="survival1">gotItem_medal_survival1</completeEvent>
+		</step>
+		<step id="step6">
+			<startEvent island="survival1">gotItem_medal_survival1</startEvent>
+			<completeEvent island="prison">gotItem_medal_prison</completeEvent>
+		</step>
+		<step id="step7">
+			<startEvent island="prison">gotItem_medal_prison</startEvent>
+			<completeEvent island="timmy">gotItem_medal_timmy</completeEvent>
+		</step>
+		<step id="step8">
+			<startEvent island="timmy">gotItem_medal_timmy</startEvent>
+			<completeEvent island="time">gotItem_medalTime</completeEvent>
+		</step>
+	</quest>
+</quests>

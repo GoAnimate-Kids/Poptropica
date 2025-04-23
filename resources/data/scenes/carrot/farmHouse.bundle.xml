@@ -1,0 +1,226 @@
+<merged><file path="/items.xml"><items>
+	<item>
+		<id>emptyBowl</id>
+		<asset>emptyBowl.zip</asset>
+		<x>600</x>
+		<y>990</y>
+		<label>
+			<text>Examine</text>
+			<type>click</type>
+		</label>
+	</item>
+</items></file>
+
+<file path="/hits.xml"><hits>
+	<hit color="0xff6600" id="wall">
+		<component type="wall"/>
+	</hit>
+	<hit color="0xffcc00" id="ceiling">
+		<component type="ceiling"/>
+	</hit>
+	
+	<hit id="climb1">
+		<component type="climb"/>
+	</hit>
+	<hit color="0xff0000" id="couch" platform="true">
+		<component type="bounce">
+			<velocity>
+				<x>0</x>
+				<y>-800</y>
+			</velocity>
+		</component>
+	</hit>
+	<hit color="0xFF4D00" id="bed" platform="true">
+		<component type="bounce">
+			<velocity>
+				<x>0</x>
+				<y>-800</y>
+			</velocity>
+		</component>
+	</hit>
+	
+	<hit color="0xC47B39" id="table" platform="true">
+		<component type="platform"/>
+	</hit>
+	<hit color="0xB76D00" id="chair" platform="true">
+		<component type="platform"/>
+	</hit>
+	<hit color="0xC4A67D" id="cardboard" platform="true">
+		<component type="platform"/>
+	</hit>
+	<hit color="0x09C479" id="tiledFloor" platform="true">
+		<component type="platform"/>
+	</hit>
+	<hit color="0xA6C180" id="toiletTop" platform="true">
+		<component type="platform"/>
+	</hit>
+	<hit color="0xB9BEA5" id="toiletSeat" platform="true">
+		<component type="platform"/>
+	</hit>
+	<hit color="0xAEBBE8" id="sink" platform="true">
+		<component type="platform"/>
+	</hit>
+	<hit color="0xA49D55" id="wardrobe" platform="true">
+		<component type="platform"/>
+	</hit>
+	<hit color="0xD27575" id="woodboards" platform="true">
+		<component type="platform"/>
+	</hit>
+	<hit color="0xA6967B" id="bathtub" platform="true">
+		<component type="platform"/>
+	</hit>
+	<hit color="0xA768A8" id="firePlace" platform="true">
+		<component type="platform"/>
+	</hit>
+</hits></file>
+
+<file path="/dialog.xml"><dialogs>
+	<character id="player">
+		<statement triggeredByEvent="gotItem_emptyBowl">Hmm, I wonder why this empty bowl is on the ground?</statement>
+		<statement triggeredByEvent="cat_hiding">She seems spooked. Maybe I can lure her downstairs.</statement>
+		<statement triggeredByEvent="cat_following">She liked the milk! Now to get her back to Charlie.</statement>
+	</character>
+	<character id="cat">
+		<statement triggeredByEvent="milk_given">Meow</statement>
+		<statement triggeredByEvent="cat_meow">Meow</statement>
+		<statement triggeredByEvent="cat_following">Purr</statement>
+		<statement triggeredByEvent="cat_purr">Purr</statement>
+	</character>	
+</dialogs></file>
+
+<file path="/npcs.xml"><npcs>
+	<npc id="cat" variant="creature">
+		<skin>
+			<gender>female</gender>
+			<skinColor>0xBFAE8B</skinColor>
+			<hairColor>0xBFAE8B</hairColor>
+			<eyes></eyes>
+			<mouth>cat</mouth>
+			<marks></marks>
+			<facial>cat</facial>
+			<hair>cat</hair>
+			<shirt>bare</shirt>
+			<pants>bare</pants>
+			<pack>cat</pack>
+			<item></item>
+			<overshirt></overshirt>
+			<overpants></overpants>
+			<lineColor></lineColor>
+			<eyeState>squint</eyeState>
+			<lineWidth></lineWidth>
+		</skin>
+		<position>
+			<x>96</x>
+			<y>410</y>
+		</position>
+		<range>
+			<x>0</x>
+			<y>0</y>
+		</range>
+		<ignoreDepth>true</ignoreDepth>
+	</npc>
+</npcs></file>
+
+<file path="/sounds.xml"><sounds>
+	<sound type="music">
+		<asset fade="true" exclusiveType="true" loop="true">Sneaky_Suspense.mp3</asset>
+	</sound>
+	
+	<sound type="effects">
+		<asset triggeredByEvent="shower_knob_turned">shower_valve_01.mp3</asset>
+		<asset loop="true" triggeredByEvent="shower_started">shower_01_L.mp3</asset>
+		<asset id="cat" triggeredByEvent="milk_given">cat_meow_01.mp3</asset>
+		<asset id="cat" triggeredByEvent="cat_purr">cat_purring_01_L.mp3</asset>
+		<asset id="cat" triggeredByEvent="cat_meow">cat_meow_01.mp3</asset>
+		<asset exclusiveType="true" id="cat" triggeredByEvent="cat_drink">cat_sipping_01_L.mp3</asset>
+		<!-- <asset triggeredByEvent="gotItem_emptyBowl">card_get.mp3</asset> -->
+		<asset triggeredByEvent="place_bowl">porcelain_tap_01.mp3</asset>
+	</sound>
+	
+	<sound action="climb" type="effects">
+		<asset allowOverlap="false" id="climb1">rope_strain_01.mp3</asset>
+	</sound>
+	
+	<sound action="impact" type="effects">
+		<asset id="couch">ls_spring_misc_furniture_01.mp3, ls_spring_misc_furniture_02.mp3, ls_spring_misc_furniture_03.mp3</asset>
+		<asset id="bed">ls_spring_01.mp3</asset>
+		<asset id="table">ls_wood_01.mp3, ls_wood_02.mp3</asset>
+		<asset id="chair">ls_wood_01.mp3, ls_wood_02.mp3</asset>
+		<asset id="cardboard">ls_cardboard_01.mp3, ls_cardboard_02.mp3</asset>
+		<asset id="tiledFloor">ls_linoleum_01.mp3, ls_linoleum_02.mp3</asset>
+		<asset id="toiletTop">ls_squishy_toilet_top_01.mp3</asset>
+		<asset id="toiletSeat">ls_toilet_plastic_01.mp3, ls_toilet_plastic_02.mp3</asset>
+		<asset id="sink">ls_porcelain_01.mp3, ls_porcelain_02.mp3</asset>
+		<asset id="wardrobe">ls_wood_01.mp3, ls_wood_02.mp3</asset>
+		<asset id="woodboards">ls_old_wood_plank_01.mp3, ls_old_wood_plank_02.mp3</asset>
+		<asset id="bathtub">ls_porcelain_01.mp3, ls_porcelain_02.mp3</asset>
+		<asset id="firePlace">ls_brick_01.mp3, ls_brick_02.mp3</asset>
+		<asset id="baseGround">ls_old_wood_plank_01.mp3, ls_old_wood_plank_02.mp3</asset>
+	</sound>
+	
+	<sound action="step" type="effects">
+		<asset id="table">fs_wood_01.mp3, fs_wood_02.mp3, fs_wood_03.mp3, fs_wood_04.mp3</asset>
+		<asset id="chair">fs_wood_01.mp3, fs_wood_02.mp3, fs_wood_03.mp3, fs_wood_04.mp3</asset>
+		<asset id="cardboard">fs_cardboard_01.mp3, fs_cardboard_02.mp3, fs_cardboard_03.mp3, fs_cardboard_04.mp3</asset>
+		<asset id="tiledFloor">fs_linoleum_01.mp3, fs_linoleum_02.mp3, fs_linoleum_03.mp3, fs_linoleum_04.mp3</asset>
+		<asset id="toiletTop">fs_hollow_plastic_01.mp3, fs_hollow_plastic_02.mp3, fs_hollow_plastic_03.mp3, fs_hollow_plastic_04.mp3</asset>
+		<asset id="toiletSeat">fs_hollow_plastic_01.mp3, fs_hollow_plastic_02.mp3, fs_hollow_plastic_03.mp3, fs_hollow_plastic_04.mp3</asset>
+		<asset id="sink">fs_hollow_plastic_01.mp3, fs_hollow_plastic_02.mp3, fs_hollow_plastic_03.mp3, fs_hollow_plastic_04.mp3</asset>
+		<asset id="wardrobe">fs_wood_01.mp3, fs_wood_02.mp3, fs_wood_03.mp3, fs_wood_04.mp3</asset>
+		<asset id="woodboards">fs_old_wood_plank_01.mp3, fs_old_wood_plank_02.mp3, fs_old_wood_plank_03.mp3, fs_old_wood_plank_04.mp3</asset>
+		<asset id="bathtub">fs_hollow_plastic_01.mp3, fs_hollow_plastic_02.mp3, fs_hollow_plastic_03.mp3, fs_hollow_plastic_04.mp3</asset>
+		<asset id="firePlace">fs_brick_01.mp3, fs_brick_02.mp3, fs_brick_03.mp3, fs_brick_04.mp3</asset>
+		<asset id="baseGround">fs_old_wood_plank_01.mp3, fs_old_wood_plank_02.mp3, fs_old_wood_plank_03.mp3, fs_old_wood_plank_04.mp3</asset>
+	</sound>
+</sounds></file>
+
+<file path="/scene.xml"><scene>
+	<sceneType>default</sceneType>
+	<cameraLimits>
+		<left>0</left>
+		<top>0</top>
+		<right>1442</right>
+		<bottom>1062</bottom>	
+	</cameraLimits>
+	<bounds>
+		<left>40</left>
+		<top>0</top>
+		<right>1380</right>
+		<bottom>1009</bottom>
+	</bounds>
+	<assets>bundle.zip</assets>
+	<data>doors.xml,npcs.xml,items.xml,dialog.xml,sounds.xml,hits.xml</data>
+	<layers>
+		<layer>
+			<asset>background.zip</asset>
+		</layer>
+		<layer>
+			<asset>bitmap_hits.zip</asset>
+		</layer>
+		<layer hit="true">
+			<asset>interactive.zip</asset>
+		</layer>
+		<layer>
+			<asset>foreground.zip</asset>
+		</layer>		
+	</layers>
+	<player>
+		<defaultPosition>
+			<x>136</x>
+			<y>969</y>
+		</defaultPosition>
+		<direction>right</direction>
+	</player>
+</scene></file>
+
+<file path="/doors.xml"><doors>
+	<door id="door1">
+		<scene>game.scenes.carrot.farm.Farm</scene>
+		<x>2600</x>
+		<y>481</y>
+		<label>
+			<text>Exit</text>
+			<type>exitUp</type>
+		</label>
+	</door>
+</doors></file></merged>

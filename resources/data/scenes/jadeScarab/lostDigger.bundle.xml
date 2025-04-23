@@ -1,0 +1,156 @@
+
+<merged>
+
+<file path="/hits.xml">
+		<hits>
+			<hit id="baseGround" platform="true">
+				<component type="platform"/>
+			</hit>
+			<hit id="platform" color="0x2A1500" platform="true">
+				<component type="platform"/>
+			</hit>
+			<hit id="metal" color="0xF4DFA3" platform="true">
+				<component type="platform"/>
+			</hit>
+		</hits>
+	</file>
+<file path="/items.xml"><items>
+	<item triggerEvent="returned_digger,true">
+		<id>receipt</id>
+		<asset>receipt.zip</asset>
+		<x>1719</x>
+		<y>764</y>
+		<label>
+			<text>Examine</text>
+			<type>exitDown</type>
+		</label>
+	</item>
+</items></file>
+	<file path="/dialog.xml">
+		<dialogs>
+			<character id="player">
+				<statement id="lost" link="check">Doesn't seem like it was lost at all.</statement>
+				<statement lockInput="true" id="check">I should check it out.</statement>
+				<statement lockInput="true" triggeredByEvent="returned_digger" link="scuba">Blah blah, One shovel, two buckets, blah blah, one scuba tank, crickets...</statement>
+				<statement lockInput="true" id="scuba" link="ready" linkEntityId="mechanic">Scuba tank? What would anyone do with scuba gear out in the desert?</statement>
+				<statement lockInput="true" id="diggerInteraction">Looks like it's in working order.</statement>
+				<statement lockInput="true" id="chainInteraction">Looks like he's got it hooked up already.</statement>
+			</character>
+			<character id="bes">
+				<statement>There's gotta be a clue about how it got way out here.</statement>
+				<statement id="weird" link="lost" linkEntityId="player">Super weird. Looks like somebody just parked it way out here.</statement>
+			</character>
+			<character id="mechanic">
+				<statement>She'll be ready to go in a jiffy!</statement>
+				<statement lockInput="true" id="ready" triggerEvent="loadScene" triggerEventArgs="game.scenes.jadeScarab.adStreet2.AdStreet2">She's ready to go! Let's get back to the village.</statement>
+			</character>
+		</dialogs>
+	</file>
+	<file path="/npcs.xml">
+		<npcs>
+			<npc id="bes">
+				<skin>
+					<gender>male</gender>
+					<skinColor>0xD38E6C</skinColor>
+					<hairColor>0x553D3A</hairColor>
+					<eyeState>casual</eyeState>
+					<eyes>eyes</eyes>
+					<marks>empty</marks>
+					<mouth>15</mouth>
+					<facial>empty</facial>
+					<hair>is_bes</hair>
+					<pants>is_bes</pants>
+					<shirt>is_bes</shirt>
+				</skin>
+				<position>
+					<x>110</x>
+					<y>930</y>
+				</position>
+				<range>
+					<x>0</x>
+					<y>0</y>
+				</range>
+				<direction>right</direction>
+			</npc>
+			<npc id="mechanic" variant="head">
+				<skin>
+					<gender>male</gender>
+					<skinColor>0x715740</skinColor>
+					<hairColor>0x161308</hairColor>
+					<eyeState>squint</eyeState>
+					<eyes>eyes</eyes>
+					<mouth>thinking</mouth>
+					<hair>jan_member_boy</hair>
+				</skin>
+				<faceSpeaker>false</faceSpeaker>
+				<position>
+					<x>540</x>
+					<y>700</y>
+				</position>
+				<range>
+					<x>0</x>
+					<y>0</y>
+				</range>
+				<direction>left</direction>
+			</npc>
+		</npcs>
+	</file>
+	<file path="/sounds.xml">
+		<sounds>
+	<sound type="music">
+		<asset fade="true" exclusiveType="true" loop="true" baseVolume=".5">arab1_main_theme_b.mp3</asset>
+	</sound>
+	<sound type="effects" action="impact">
+		<asset id="platform">ls_concrete_01.mp3, ls_concrete_02.mp3</asset>
+		<asset id="baseGround">ls_sand_01.mp3, ls_sand_02.mp3</asset>
+		<asset id="metal">ls_general_metal_01.mp3, ls_general_metal_02.mp3</asset>
+	</sound>
+	<sound type="effects" action="step">
+		<asset id="platform">fs_concrete_01.mp3, fs_concrete_02.mp3, fs_concrete_03.mp3, fs_concrete_04.mp3</asset>
+		<asset id="baseGround">fs_sand_01.mp3, fs_sand_02.mp3, fs_sand_03.mp3, fs_sand_04.mp3</asset>
+		<asset id="metal">fs_general_metal_01.mp3, fs_general_metal_02.mp3, fs_general_metal_03.mp3, fs_general_metal_04.mp3</asset>
+	</sound>
+</sounds>
+	</file>
+	<file path="/scene.xml">
+		<scene>
+			<sceneType>default</sceneType>
+			<cameraLimits>
+				<left>0</left>
+				<top>0</top>
+				<right>2150</right>
+				<bottom>985</bottom>
+			</cameraLimits>
+			<bounds>
+				<left>10</left>
+				<top>0</top>
+				<right>2008</right>
+				<bottom>929</bottom>
+			</bounds>
+			<data>dialog.xml,doors.xml,npcs.xml,sounds.xml,hits.xml,vendor_cart.xml</data>
+			<assets>bundle.zip</assets>
+			<layers>
+				<layer>
+					<asset>background.zip</asset>
+				</layer>
+				<layer hit="true">
+					<asset>bitmap_hits.zip</asset>
+				</layer>
+				<layer hit="true">
+					<asset>interactive.zip</asset>
+				</layer>
+				<layer>
+					<asset>foreground.zip</asset>
+				</layer>
+			</layers>
+			<player>
+				<defaultPosition>
+					<x>119</x>
+					<y>929</y>
+				</defaultPosition>
+				<defaultDirection>right</defaultDirection>
+			</player>
+		</scene>
+	</file>
+
+</merged>

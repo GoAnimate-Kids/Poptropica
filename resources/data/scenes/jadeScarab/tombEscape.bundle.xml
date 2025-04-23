@@ -1,0 +1,118 @@
+<merged>
+
+<file path="/hits.xml">
+		<hits>
+			<hit id="baseGround" platform="true">
+				<component type="platform"/>
+			</hit>
+			<hit id="wall" color="0xff6600">
+				<component type="wall"/>
+			</hit>
+			<hit id="ceiling" color="0xffcc00">
+				<component type="ceiling"/>
+			</hit>
+			<hit id="dirt" color="0x993300" platform="true">
+				<component type="platform"/>
+			</hit>
+			<hit id="stone" color="0xC2D6D6" platform="true">
+				<component type="platform"/>
+			</hit>
+		</hits>
+	</file>
+	<file path="/dialog.xml">
+		<dialogs>
+			<character id="player">
+				<statement lockInput="true" link="creep">This must be the real Jade Scarab!</statement>
+				<statement lockInput="true" id="creep" link="museum">But if I could find it, what's stopping that creep from coming back and doing the same?</statement>
+				<statement lockInput="true" id="museum">I should get this to the museum.</statement>
+			</character>
+		</dialogs>
+	</file>
+	<file path="/sounds.xml">
+		<sounds>
+	<sound type="music">
+		<asset fade="true" exclusiveType="true" loop="true" baseVolume=".5">ancient_cavern.mp3</asset>
+	</sound>
+	<sound type="effects" action="doorOpened">
+		<asset>openDoor_pushBar.mp3</asset>
+	</sound>
+	<sound type="effects" action="impact">
+		<asset id="baseGround">ls_linoleum_verb_01.mp3, ls_linoleum_verb_02.mp3</asset>
+		<asset id="dirt">ls_brick_verb_01.mp3, ls_brick_verb_02.mp3</asset>
+		<asset id="stone">ls_linoleum_verb_01.mp3, ls_linoleum_verb_02.mp3</asset>
+	</sound>
+	<sound type="effects" action="step">
+		<asset id="baseGround">fs_linoleum_verb_01.mp3, fs_linoleum_verb_02.mp3, fs_linoleum_verb_03.mp3, fs_linoleum_verb_04.mp3</asset>
+		<asset id="dirt">fs_brick_verb_01.mp3, fs_brick_verb_02.mp3, fs_brick_verb_03.mp3, fs_brick_verb_04.mp3</asset>
+		<asset id="stone">fs_linoleum_verb_01.mp3, fs_linoleum_verb_02.mp3, fs_linoleum_verb_03.mp3, fs_linoleum_verb_04.mp3</asset>
+	</sound>
+</sounds>
+	</file>
+	<file path="/items.xml"><items>
+		<item>
+			<id>true_scarab</id>
+			<asset>true_scarab.zip</asset>
+			<x>3016</x>
+			<y>3355</y>
+			<label>
+				<text>Examine</text>
+				<type>exitDown</type>
+			</label>
+		</item>
+	</items></file>
+	<file path="/scene.xml">
+		<scene>
+			<sceneType>default</sceneType>
+			<cameraLimits>
+				<left>0</left>
+				<top>0</top>
+				<right>3600</right>
+				<bottom>3560</bottom>
+			</cameraLimits>
+			<bounds>
+				<left>74</left>
+				<top>75</top>
+				<right>3426</right>
+				<bottom>3500</bottom>
+			</bounds>
+			<data>dialog.xml,doors.xml,npcs.xml,sounds.xml,hits.xml,vendor_cart.xml</data>
+			<assets>bundle.zip</assets>
+			<layers>
+				<layer>
+					<asset>background.zip</asset>
+				</layer>
+				<layer hit="true">
+					<asset>bitmap_hits.zip</asset>
+				</layer>
+				<layer hit="true">
+					<asset>interactive.zip</asset>
+				</layer>
+			</layers>
+			<player>
+				<defaultPosition>
+					<x>300</x>
+					<y>395</y>
+				</defaultPosition>
+				<defaultDirection>right</defaultDirection>
+			</player>
+		</scene>
+	</file>
+	<file path="/doors.xml">
+		<doors>
+		<door id="door_finale">
+				<scene>game.scenes.jadeScarab.finale.Finale</scene>
+				<x>1700</x>
+				<y>1930</y>
+				<label>
+					<text>Escape</text>
+					<type>exit3D</type>
+					<offset>
+						<x>0</x>
+						<y>0</y>
+					</offset>
+				</label>
+			</door>
+		</doors>
+	</file>
+
+</merged>

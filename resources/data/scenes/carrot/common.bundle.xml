@@ -1,0 +1,115 @@
+<merged>
+
+<file path="/hits.xml"><hits>
+	<hit color="0x00FF00" id="ground" platform="true">
+		<component type="platform"/>
+	</hit>
+	<hit id="baseGround" platform="true">
+		<component type="platform"/>
+	</hit>
+	<hit color="0xff6600" id="wall">
+		<component type="wall"/>
+	</hit>
+	<hit color="0xffcc00" id="ceiling">
+		<component type="ceiling"/>#FF1300
+	</hit>
+	<hit color="0xff0000" id="bounce" platform="true">
+		<component type="bounce">
+			<velocity>
+				<x>0</x>
+				<y>-800</y>
+			</velocity>
+		</component>
+	</hit>
+	<hit color="0xA8CFFF" id="ice" platform="true">
+		<component type="platform">
+		<stickToPlatforms>true</stickToPlatforms>
+			<friction>
+				<x>500</x>
+				<y>0</y>
+			</friction>
+		</component>
+	</hit>
+</hits></file>
+
+<file path="/dialog.xml"><dialogs>
+</dialogs></file>
+
+<file path="/sounds.xml"><sounds>
+	<sound type="music">
+		<asset loop="true">FilmStudio.mp3</asset>
+	</sound>
+	
+	<sound action="impact" type="effects">
+		<asset id="baseGround">ls_concrete_01.mp3, ls_concrete_02.mp3 </asset>
+		<asset id="bounce">ls_bounce_01.mp3, ls_bounce_02.mp3, ls_bounce_03.mp3</asset>
+		<asset id="ground">ls_concrete_01.mp3, ls_concrete_02.mp3</asset>
+		<asset id="ice">ls_ice_01.mp3, ls_ice_02.mp3</asset>
+	</sound>
+	
+	<sound action="step" type="effects">
+		<asset id="baseGround">fs_concrete_01.mp3, fs_concrete_02.mp3, fs_concrete_03.mp3, fs_concrete_04.mp3 </asset>
+		<asset id="ground">fs_concrete_01.mp3, fs_concrete_02.mp3</asset>
+		<asset id="ice">fs_ice_01.mp3, fs_ice_02.mp3, fs_ice_03.mp3, fs_ice_04.mp3</asset>
+	</sound>
+</sounds></file>
+
+<file path="/islandStore.xml"><store>
+	<item price="75" memOnly="false">15004</item>
+	<item price="250" memOnly="false">15005</item>
+	<item price="300" memOnly="false">15006</item>
+	<item price="350" memOnly="false">15007</item>
+</store></file>
+
+<file path="/scene.xml"><scene>
+	<sceneType>default</sceneType>
+	<cameraLimits>
+		<left>0</left>
+		<top>0</top>
+		<right>946</right>
+		<bottom>845</bottom>	
+	</cameraLimits>
+	<bounds>
+		<left>0</left>
+		<top>0</top>
+		<right>946</right>
+		<bottom>845</bottom>
+	</bounds>
+	<data>doors.xml,sounds.xml,hits.xml,dialog.xml</data>
+	<assets>bundle.zip</assets>
+	<layers>
+		<layer>
+			<asset>background.zip</asset>
+		</layer>
+		<layer>
+			<asset>bitmap_hits.zip</asset>
+		</layer>
+		<layer hit="true">
+			<asset>interactive.zip</asset>
+		</layer>
+	</layers>
+	<player>
+		<defaultPosition>
+			<x>472</x>
+			<y>300</y>
+		</defaultPosition>
+	</player>
+</scene></file>
+
+<file path="/doors.xml"><doors>
+	<door id="door1">
+		<scene>game.scenes.carrot.mainStreet.MainStreet</scene>
+		<x>1700</x>
+		<y>984</y>
+		<label>
+			<text>EXIT</text>
+			<asset>exit3D</asset>
+			<offset>
+				<x>0</x>
+				<y>0</y>
+			</offset>
+		</label>
+	</door>
+</doors></file>
+
+</merged>

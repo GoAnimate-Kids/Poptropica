@@ -1,0 +1,111 @@
+
+<merged>
+
+<file path="/hits.xml"><hits>
+	<hit color="0xC26262" id="floor" platform="true">
+		<component type="platform"/>
+	</hit>
+	<hit color="0xB4C2D1" id="counter" platform="true">
+		<component type="platform"/>
+	</hit>
+	<hit color="0xC2C2C2" id="tile" platform="true">
+		<component type="platform"/>
+	</hit>	
+	<hit color="0xff6600" id="wall">
+		<component type="wall"/>
+	</hit>	
+	<hit color="0xffcc00" id="ceiling">
+		<component type="ceiling"/>
+	</hit>
+	<hit id="baseGround">
+		<component type="platform"/>
+	</hit>
+</hits></file>
+
+<file path="/dialog.xml"><dialogs>
+<!--<character id="npc"><conversation><exchange><question>A bit foggy this evening, isn't it?</question><answer>Indeed, Neptune himself has covered the sea with his gossamer cloak.</answer></exchange><exchange><question>Weird, I thought it was just water vapor?</question><answer>Aye, there be much you don't know, har har!</answer></exchange><exchange><question>Know any good poems?</question><answer>The moon shone pale as bone, as I stood there alone...</answer></exchange></conversation>    </character>    -->
+</dialogs></file>
+
+<file path="/npcs.xml"><npcs>
+<!--<npc id="npc"><skin><gender>male</gender><skinColor>0xB77E48</skinColor><hairColor>0x4A2C17</hairColor><eyes></eyes><mouth></mouth><marks></marks><facial></facial><hair></hair><shirt></shirt><pants></pants><pack></pack><item></item><overshirt></overshirt><overpants></overpants><lineColor></lineColor><eyeState></eyeState><lineWidth></lineWidth></skin><position><x>1100</x><y>920</y></position><range><x>0</x><y>0</y></range><direction>left</direction></npc>-->
+</npcs></file>
+
+<file path="/sounds.xml"><sounds>
+	<sound type="ambient">
+		<asset loop="true" fade="true" exclusivetype="true">room_tone.mp3</asset>
+	</sound>
+    <sound action="doorOpened" type="effects">
+		<asset>openDoor_pushBar.mp3</asset>
+	</sound>
+	
+	<sound action="step" type="effects">
+		<asset id="baseGround">fs_tile_01.mp3, fs_tile_02.mp3, fs_tile_03.mp3, fs_tile_04.mp3</asset>
+		<asset id="floor">fs_plastic_01.mp3,fs_plastic_02.mp3,fs_plastic_03.mp3,fs_plastic_04.mp3</asset>
+		<asset id="counter">fs_metal_shelf_01.mp3,fs_metal_shelf_02.mp3,fs_metal_shelf_03.mp3,fs_metal_shelf_04.mp3</asset>
+		<asset id="tile">fs_tile_01.mp3, fs_tile_02.mp3, fs_tile_03.mp3, fs_tile_04.mp3</asset>
+	</sound>	
+	<sound action="impact" type="effects">
+		<asset id="baseGround">ls_tile_01.mp3, ls_tile_02.mp3</asset>
+		<asset id="floor">ls_plastic_01.mp3,ls_plastic_02.mp3</asset>
+		<asset id="counter">ls_metal_shelf_01.mp3,ls_metal_shelf_02.mp3</asset>
+		<asset id="tile">ls_tile_01.mp3, ls_tile_02.mp3</asset>
+	</sound>
+</sounds></file>
+
+<file path="/islandStore.xml"><store>
+	<item price="75" memOnly="false">15000</item>
+	<item price="250" memOnly="false">15001</item>
+	<item price="300" memOnly="false">15002</item>
+	<item price="350" memOnly="false">15003</item>
+</store></file>
+
+<file path="/scene.xml"><scene>
+	<sceneType>default</sceneType>
+	<cameraLimits>
+		<left>0</left>
+		<top>0</top>
+		<right>1220</right>
+		<bottom>840</bottom>	
+	</cameraLimits>
+	<bounds>
+		<left>30</left>
+		<top>0</top>
+		<right>1200</right>
+		<bottom>940</bottom>
+	</bounds>
+	<data>dialog.xml,doors.xml,npcs.xml,sounds.xml,hits.xml</data>
+	<assets>bundle.zip</assets>
+	<layers>
+		<layer>
+			<asset>background.zip</asset>
+		</layer>
+		<layer hit="true">
+			<asset>bitmap_hits.zip</asset>
+		</layer>
+		<layer hit="true">
+			<asset>interactive.zip</asset>
+		</layer>
+	</layers>
+	<player>
+		<defaultPosition>
+			<x>800</x>
+			<y>1239</y>
+		</defaultPosition>
+		<defaultDirection>right</defaultDirection>
+	</player>
+</scene></file>
+
+<file path="/doors.xml"><doors>
+	<door id="doorMainStreet">
+		<scene>game.scenes.prison.mainStreet.MainStreet</scene>
+		<x>2950</x>
+		<y>1450</y>
+		<direction>left</direction>
+		<label>
+			<text>Exit</text>
+			<asset>exit3D</asset>
+		</label>
+	</door>
+</doors></file>
+
+</merged>

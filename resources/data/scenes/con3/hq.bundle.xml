@@ -1,0 +1,674 @@
+<merged>
+	
+<file path="/dialog.xml"><dialogs>
+    <character id="player">
+    	<statement id="happen">What happened?</statement>
+    	<statement id="night">What a nightmare!</statement>
+    
+		<statement linkEntityId="fan" id="defeat" link="duh">How did the Mighty Action Force defeat Omegon?</statement>
+		<statement linkEntityId="fan" id="what" link="comic">Uh.. so what are we supposed to do?</statement>
+		
+		<statement id="weapons">This is it.</statement>
+		<statement id="yes">No doubt about it. These are all of the Mighty Action Force weapons.</statement>
+		
+		<statement id="months">How could you?</statement>
+		<statement id="offer">What happens now? What kind of a deal did Omegon offer you?</statement>
+		
+		<statement id="doom">We're doomed!</statement>
+		<statement id="where">Where can I find the Omega Crystal?</statement>
+		<statement id="noble">That's uncharacteristically noble of you.</statement>
+    </character>
+    
+	<character id="leader">
+		<statement id="intro">We thought you'd never wake up!</statement>	
+		<statement id="taken">Omegon has taken over the convention. This basement room is all that's left of the human resistance.</statement>
+		<statement id="sadly">Sadly, this is all too real.</statement>
+		<statement id="bearings">Get your bearings and then come talk to me when you're ready...</statement>
+		
+		<conversation>
+			<exchange>
+				<question>Tell me you have a plan.</question>
+				<answer>If we gather the Mighty Action Force Weapons, we have a fighting chance to defeat Omegon.</answer>
+			</exchange>
+			<exchange>
+				<question>What are the Mighty Action Force Weapons?</question>
+				<answer>There are three: Elf Archer's bow, Goldface's electron pulse, and World Guy's shield.</answer>
+			</exchange>
+			<exchange>
+				<question>How will I recognize them?</question>
+				<answer>My second-in-command will give you a comic page that should help.</answer>
+			</exchange>
+		</conversation>
+		
+		<statement id="sure">You're sure? This is all of it?</statement>
+		<statement id="betray">In that case... we are here, my lord!</statement>
+		
+		<statement id="sorry">I'm sorry. This was the only way.</statement>
+		<statement id="time">For months we've been living underground, barely scraping by. It was only a matter of time before Omegon got to us, too!</statement>
+		<statement id="power">In exchange for giving up the resistance, he's promised me the powers of Alphaon. Omegon... I am ready!</statement>
+		<statement id="no">What? No! I did everything you asked!</statement>
+    </character>
+    
+    <character id="fan">
+		<statement linkEntityId="player" link="defeat">This is just like the "Reign of Omegon" arc from issues 172-178!</statement>
+		<statement linkEntityId="player" id="duh" link="what">Duh -- they summoned Alphaon.</statement>
+		<statement id="comic" triggerEventArgs="show_comic178" triggerEvent="triggerEvent">Don't you understand anything? It's all right here!</statement>
+<!-- <statement id="comic" triggerEvent="giveItem" triggerEventArgs="comic178, fan">Don't you understand anything? It's all right here!</statement> -->
+		
+		<statement event="gotItem_comic178">It's all explained in the comic. Go figure it out.</statement>
+		
+		<statement id="alphaon">Alphaon, here we come!</statement>
+		<statement id="ripoff" forceOnScreen="true">Wait a minute, this isn't what happened in the comic. What a rip-off!</statement>
+		<statement id="crystal" triggerEventArgs="show_comic367" triggerEvent="triggerEvent" forceOnScreen="true">Not so fast. In issue #367, the Mighty Action Force sent Omegon back to his home dimension by overloading the Omega Crystal. Take a look!</statement>
+		<statement id="throne">It's in Omegon's throne room. You go. I'll hold them off!</statement>
+		<statement id="heroic">The heroic sacrifice -- it's what Stan Ditko would have wanted.</statement>
+    </character>
+    
+    <character id="omegon">
+		<statement id="futile">Resistance is futile.</statement>
+		<statement id="plant">Take her to the processing plant.</statement>
+		<statement id="reign">The reign of Omegon is here. Welcome to your doom.</statement>
+    </character>
+    
+    
+    <character id="survivor1">
+    	<statement>I can't even remember life before Omegon.</statement>
+		<statement event="starter_deck" link="play">I can't even remember life before Omegon. All i do is play MAF cards now.</statement>
+		<conversation id="play">
+    		<exchange>
+    			<question triggerEventArgs="play_hippie" triggerEvent="triggerEvent">Lets play!</question>
+    		</exchange>
+    		<exchange>
+    			<question>Not now.</question>
+    		</exchange>
+    	</conversation>
+		
+    </character>
+    <character id="survivor2">
+        <statement>Playing the Mighty Action Force card game is the only joy I have left.</statement>
+		<statement event="starter_deck" link="play">Playing the Mighty Action Force card game is the only joy I have left.</statement>
+			<conversation id="play">
+    		<exchange>
+    			<question triggerEventArgs="play_card2" triggerEvent="triggerEvent">Lets play!</question>
+    		</exchange>
+    		<exchange>
+    			<question>Not now.</question>
+    		</exchange>
+    	</conversation>
+    </character>
+    
+    <character id="goldFace">
+    	<statement event="hasItem_gauntlets">Boy, I thought those Goldface fanboys were nuts. This Omegon is on another level!</statement>
+		<statement link="give_gaunts">Boy, I thought those Goldface fanboys were nuts. This Omegon is on another level!</statement>
+		<statement id="give_gaunts" triggerEventArgs="gauntlets, goldface" triggerEvent="giveItem">You can have my electron pulse gauntlets. they'd shoot sparks if the rechargeable batteries weren't dead.</statement>
+		<statement id="again">Not again!</statement>
+    </character>
+    
+    <character id="elfArcher">
+        <statement event="hasItem_bow">I tried to explain that I never even shot an arrow in the movie. My stunt double did!</statement>
+		<statement link="give_bow">I tried to explain that I never even shot an arrow in the movie. My stunt double did!</statement>
+		<statement id="give_bow" triggerEventArgs="bow, elfArcher" triggerEvent="giveItem">Take this replica elf archer bow. i don't know how to shoot it anyway.</statement>
+    </character>
+    
+    <character id="worldGuy">
+        <statement event="hasItem_shield">Stardom isn't all fast cars and good times. Sometimes you get kidnapped by a robot from another dimension.</statement>
+		<statement link="give_shield">Stardom isn't all fast cars and good times. Sometimes you get kidnapped by a robot from another dimension.</statement>
+   		<statement id="give_shield" triggerEventArgs="shield, worldGuy" triggerEvent="giveItem">Here, take my shield. makes a good mirror to check your hair with.</statement>
+    </character>
+    
+    <character id="dealer">
+		<statement link="try_game">All we have left from the convention are Mighty Action Force starter packs. Want another one?</statement>
+    
+    	<conversation id="try_game">
+    		<exchange>
+    			<question triggerEventArgs="check_if_played" triggerEvent="triggerEvent">Sure!</question>
+    		</exchange>
+    		<exchange>
+    			<question>Not now.</question>
+    		</exchange>
+    	</conversation>
+    	
+    	<statement id="give_starter" triggerEventArgs="give_deck" triggerEvent="triggerEvent">Here's a starter pack. May it take your mind off of our daily misery.</statement>
+    	<statement id="dealer_teach" triggerEventArgs="play_dealer" triggerEvent="triggerEvent">I'll teach you how to play.</statement>
+    	<!-- <statement event="starter_deck" link="play_again">You may be able to find more cards around the con.</statement> -->
+    	
+    	<statement event="starter_deck" link="replay">Want to play again?</statement>
+    	<conversation id="replay">
+    		<exchange>
+    			<question>Sure, why not.</question>
+    			<answer triggerEventArgs="play_dealer" triggerEvent="triggerEvent">Great, let's get started.</answer>
+    		</exchange>
+    		<exchange>
+    			<question>Not now.</question>
+    		</exchange>
+    	</conversation>
+    	
+    	<statement id="won_card" link="explain_deck">Great game! That card should help strengthen your deck.</statement>
+    	<statement id="explain_deck" triggerEventArgs="open_deck" triggerEvent="triggerEvent">You can reorganize cards with your Card Deck item. Try swapping in the card you just won.</statement>
+    	<statement id="deck_closed">Remember to update your deck when you get new cards</statement>
+    </character>
+    
+</dialogs></file>
+	
+<file path="/doors.xml"><doors>
+	<door id="doorThrone">
+	<scene>game.scenes.con3.adMixed2.AdMixed2</scene>
+		<x>200</x>
+		<y>1000</y>
+		<direction>right</direction>
+		<label>
+			<text>ENTER</text>
+			<type>exit3D</type>
+			<offset>
+				<x>0</x>
+				<y>0</y>
+			</offset>
+		</label>
+		<connectingSceneDoors>
+			<door id="exitLeft">
+				<scene>game.scenes.con3.hq.Hq</scene>
+				<x>1700</x>
+				<y>360</y>
+				<direction>left</direction>
+			</door>
+			<door id="exitRight">		
+				<scene>game.scenes.con3.throneRoom.ThroneRoom</scene>
+					<x>2100</x>
+					<y>950</y>
+				<direction>left</direction>
+			</door>
+		</connectingSceneDoors>
+	</door>
+	
+	<door id="doorProcessing">
+	<scene>game.scenes.con3.adMixed1.AdMixed1</scene>
+		<x>200</x>
+		<y>1000</y>
+		<direction>right</direction>
+		<label>
+			<text>ENTER</text>
+			<type>exit3D</type>
+			<offset>
+				<x>0</x>
+				<y>0</y>
+			</offset>
+		</label>
+		<connectingSceneDoors>
+			<door id="exitLeft">
+				<scene>game.scenes.con3.hq.Hq</scene>
+				<x>1200</x>
+				<y>50</y>
+				<direction>left</direction>
+			</door>
+			<door id="exitRight">		
+				<scene>game.scenes.con3.processing.Processing</scene>
+				<x>180</x>
+				<y>542.4</y>
+				<direction>right</direction>
+			</door>
+		</connectingSceneDoors>
+	</door>
+	
+	<door id="doorMenagerie">
+	<scene>game.scenes.con3.adStreet.AdStreet</scene>
+		<x>1700</x>
+		<y>1000</y>
+		<direction>left</direction>
+		<label>
+			<text>ENTER</text>
+			<type>exit3D</type>
+			<offset>
+				<x>0</x>
+				<y>0</y>
+			</offset>
+		</label>
+		<connectingSceneDoors>
+			<door id="exitLeft">
+				<scene>game.scenes.con3.menagerie.Menagerie</scene> 
+				<x>300</x>
+				<y>1200</y>
+				<direction>right</direction>
+			</door>
+			<door id="exitRight">		
+				<scene>game.scenes.con3.hq.Hq</scene>
+				<x>300</x>
+				<y>50</y>
+				<direction>right</direction>
+			</door>
+		</connectingSceneDoors>
+	</door>
+	
+	<door id="doorCommon">
+		<scene>game.scenes.con3.common.Common</scene>
+		<x>603</x>
+		<y>823</y>
+		<label>
+			<text>COMMON ROOM</text>
+			<type>exit3D</type>
+			<offset>
+				<x>0</x>
+				<y>0</y>
+			</offset>
+		</label>
+	</door>
+</doors></file>
+	
+<file path="/hits.xml"><hits>
+	<hit color="0xff6600" id="wall">
+		<component type="wall"/>
+	</hit>
+	<hit id="baseGround" platform="true">
+		<component type="platform"/>
+	</hit>
+	<hit color="0x993300" id="table" platform="true">
+		<component type="platform"/>
+	</hit>
+	<hit color="0x0000cc" id="microwave" platform="true">
+		<component type="platform"/>
+	</hit>
+	<hit color="0x003300" id="metal" platform="true">
+		<component type="platform"/>
+	</hit>
+	<hit color="0xffffff" id="thin_metal" platform="true">
+		<component type="platform"/>
+	</hit>
+	<hit color="0xff0000" id="bed" platform="true">
+		<component type="platform"/>
+	</hit>
+<!-- <hit id="bounce" color="0xff0000" platform="true"><component type="bounce"><velocity><x>0</x><y>-800</y></velocity></component></hit> -->
+</hits></file>
+	
+<file path="/npcs.xml"><npcs>
+	<npc event="world_guy_rescued" id="omegon">
+		<skin>
+			<gender>male</gender>
+			<skinColor>0xffc215</skinColor>
+			<hairColor>0x0</hairColor>
+			<mouth>1</mouth>
+			<marks>poptropicon_omegon</marks>
+			<facial>poptropicon_omegon</facial>
+			<hair>poptropicon_omegon</hair>
+			<shirt>1</shirt>
+			<pants>pballerina2</pants>
+			<pack>poptropicon_omegon</pack>
+			<overshirt>poptropicon_omegon</overshirt>
+			<eyeState>squint</eyeState>
+			<eyes>eyes_omegon</eyes>
+		</skin>
+		<position>
+			<x>200</x>
+			<y>614</y>
+		</position>
+		<range>
+			<x>0</x>
+			<y>0</y>
+		</range>
+		<direction>right</direction>
+		<costumizable>false</costumizable>
+	</npc>
+	
+	<npc event="world_guy_rescued" id="hench0">
+		<skin>
+			<gender>male</gender>
+			<skinColor>0x2b1e1e</skinColor>
+			<hairColor>0x0</hairColor>
+			<mouth>1</mouth>
+			<facial>poptropicon_henchbot</facial>
+			<shirt>poptropicon_henchbot</shirt>
+			<pants>1</pants>
+			<overshirt>poptropicon_henchbot</overshirt>
+			<eyeState>squint</eyeState>
+		</skin>
+		<position>
+			<x>100</x>
+			<y>614</y>
+		</position>
+		<range>
+			<x>0</x>
+			<y>0</y>
+		</range>
+		<direction>right</direction>
+		<costumizable>false</costumizable>
+	</npc>
+	
+	<npc event="world_guy_rescued" id="hench1">
+		<skin>
+			<gender>male</gender>
+			<skinColor>0x2b1e1e</skinColor>
+			<hairColor>0x0</hairColor>
+			<mouth>1</mouth>
+			<facial>poptropicon_henchbot</facial>
+			<shirt>poptropicon_henchbot</shirt>
+			<pants>1</pants>
+			<overshirt>poptropicon_henchbot</overshirt>
+			<eyeState>squint</eyeState>
+		</skin>
+		<position>
+			<x>300</x>
+			<y>614</y>
+		</position>
+		<range>
+			<x>0</x>
+			<y>0</y>
+		</range>
+		<direction>right</direction>
+		<costumizable>false</costumizable>
+	</npc>
+	
+	<npc id="leader">
+		<skin>
+			<gender>female</gender>
+			<skinColor>0xd2aa71</skinColor>
+			<hairColor>0x0</hairColor>
+			<mouth>astroservant1</mouth>
+			<marks>beautymark_smudge</marks>
+			<facial>lc_mic</facial>
+			<hair>poptropicon_check</hair>
+			<shirt>poptropicon_check</shirt>
+			<pants>aeolus</pants>
+			<overshirt>poptropicon_costumecheck</overshirt>
+			<overpants>poptropicon_consec</overpants>
+			<eyeState>squint</eyeState>
+		</skin>
+		<position>
+			<x>1350</x>
+			<y>614</y>
+		</position>
+		<range>
+			<x>0</x>
+			<y>0</y>
+		</range>
+		<direction>left</direction>
+<!-- <faceSpeaker>false</faceSpeaker> -->
+	</npc>
+	
+	<npc id="fan">
+		<skin>
+			<gender>male</gender>
+			<skinColor>0xecc59f</skinColor>
+			<hairColor>0x402312</hairColor>
+			<hair>1</hair>
+			<mouth>2</mouth>
+			<marks>poptropicon_jerk_smudge</marks>
+			<facial>poptropicon_jerk</facial>
+			<pants>frenchman</pants>
+			<shirt>poptropicon_jerk</shirt>
+			<item>bl_latte</item>
+			<overpants>poptropicon_jerk</overpants>
+			<eyeState>squint</eyeState>
+		</skin>
+		<position>
+			<x>1500</x>
+			<y>614</y>
+		</position>
+		<range>
+			<x>0</x>
+			<y>0</y>
+		</range>
+		<direction>left</direction>
+	</npc>
+	
+	<npc id="dealer">
+		<animations loop="true">
+			<animation>game.data.animation.entity.character.Sit</animation>
+		</animations>
+		<skin>
+			<gender>female</gender>
+			<skinColor>0xfde7b6</skinColor>
+			<hairColor>0x453929</hairColor>
+			<mouth>pcowgirl1</mouth>
+			<marks>poptropicon_smudge</marks>
+			<hair>poptropicon_dealer</hair>
+			<shirt>poptropicon_dealer</shirt>
+			<pants>pantscounter</pants>
+			<item>poptropicon_dealer</item>
+			<overpants>poptropicon_dealer</overpants>
+			<eyeState>squint</eyeState>
+		</skin>
+		<position>
+			<x>418</x>
+			<y>590</y>
+		</position>
+		<range>
+			<x>0</x>
+			<y>0</y>
+		</range>
+		<direction>left</direction>
+		<faceSpeaker>false</faceSpeaker>
+	</npc>
+	
+	<npc id="survivor1">
+		<skin>
+			<gender>female</gender>
+			<skinColor>0xfee0d8</skinColor>
+			<hairColor>0xf08b2c</hairColor>
+			<mouth>astroprincess</mouth>
+			<marks>mtdancer_smudge</marks>
+			<facial>p_countessvampire</facial>
+			<hair>africanlady6</hair>
+			<shirt>aphrodite</shirt>
+			<pants>mtdancer</pants>
+			<pack>fm3</pack>
+			<overshirt>hippie</overshirt>
+			<eyeState>squint</eyeState>
+		</skin>
+		<position>
+			<x>1800</x>
+			<y>614</y>
+		</position>
+		<range>
+			<x>200</x>
+			<y>0</y>
+		</range>
+		<direction>left</direction>
+	</npc>
+	
+	<npc id="survivor2">
+		<animations loop="true">
+			<animation>game.data.animation.entity.character.Sit</animation>
+		</animations>
+		<skin>
+			<gender>male</gender>
+			<skinColor>0xfae0c9</skinColor>
+			<hairColor>0x453929</hairColor>
+			<mouth>astroking</mouth>
+			<marks>goat6</marks>
+			<facial>3</facial>
+			<hair>agentguy</hair>
+			<shirt>boyshirt1</shirt>
+			<pants>nw_costume1</pants>
+			<overshirt>geditor</overshirt>
+			<overpants>surlydartman</overpants>
+			<eyeState>squint</eyeState>
+		</skin>
+		<position>
+			<x>200</x>
+			<y>590</y>
+		</position>
+		<range>
+			<x>0</x>
+			<y>0</y>
+		</range>
+		<direction>right</direction>
+		<faceSpeaker>false</faceSpeaker>
+	</npc>
+	
+	<npc event="gold_face_rescued" id="goldFace">
+		<skin>
+			<gender>male</gender>
+			<skinColor>0xE09C72</skinColor>
+			<hairColor>0xa85b30</hairColor>
+			<mouth>scuba</mouth>
+			<marks>empty</marks>
+			<facial>poptropicon_goldface</facial>
+			<hair>1</hair>
+			<shirt>poptropicon_goldface</shirt>
+			<pants>poptropicon_goldface</pants>
+			<pack>poptropicon_goldface</pack>
+			<overshirt>poptropicon_goldface</overshirt>
+			<eyeState>casual</eyeState>
+		</skin>
+		<position>
+			<x>1060</x>
+			<y>345</y>
+		</position>
+		<direction>right</direction>
+	</npc>
+	
+	<npc event="elf_archer_rescued" id="elfArcher">
+		<skin>
+			<gender>female</gender>
+			<skinColor>0xBD9774</skinColor>
+			<hairColor>0x3D311F</hairColor>
+			<mouth>ppeacekeeper</mouth>
+			<marks>poptropicon_elfarcher</marks>
+			<hair>poptropicon_elfarcher</hair>
+			<shirt>poptropicon_elfarcher</shirt>
+			<pants>poptropicon_elfarcher</pants>
+			<pack>poptroicon_elfarcher</pack>
+			<item>poptropicon_elfarcher</item>
+			<overpants>poptropicon_elfarcher</overpants>
+			<eyeState>casual</eyeState>
+		</skin>
+		<position>
+			<x>520</x>
+			<y>320</y>
+		</position>
+		<direction>left</direction>
+	</npc>
+	
+	<npc event="hasItem_bow" id="elfArcher">
+		<skin>
+			<gender>female</gender>
+			<skinColor>0xBD9774</skinColor>
+			<hairColor>0x3D311F</hairColor>
+			<mouth>ppeacekeeper</mouth>
+			<marks>poptropicon_elfarcher</marks>
+			<hair>poptropicon_elfarcher</hair>
+			<shirt>poptropicon_elfarcher</shirt>
+			<pants>poptropicon_elfarcher</pants>
+			<pack>poptroicon_elfarcher</pack>
+			<item>empty</item>
+			<overpants>poptropicon_elfarcher</overpants>
+			<eyeState>casual</eyeState>
+		</skin>
+		<position>
+			<x>520</x>
+			<y>320</y>
+		</position>
+		<direction>left</direction>
+	</npc>
+	
+	<npc event="world_guy_rescued" id="worldGuy">
+		<skin>
+			<gender>male</gender>
+			<skinColor>0x936043</skinColor>
+			<hairColor>0x0</hairColor>
+			<mouth>wwannie</mouth>
+			<facial>poptropicon_worldguy</facial>
+			<hair>1</hair>
+			<shirt>poptropicon_worldguy</shirt>
+			<pants>steamcaptain</pants>
+			<item>poptropicon_worldguy</item>
+			<overpants>barpatron1</overpants>
+			<eyeState>open</eyeState>
+		</skin>
+		<position>
+			<x>1470</x>
+			<y>458</y>
+		</position>
+		<direction>right</direction>
+	</npc>
+	
+	<npc event="hasItem_shield" id="worldGuy">
+		<skin>
+			<gender>male</gender>
+			<skinColor>0x936043</skinColor>
+			<hairColor>0x0</hairColor>
+			<mouth>wwannie</mouth>
+			<facial>poptropicon_worldguy</facial>
+			<hair>1</hair>
+			<shirt>poptropicon_worldguy</shirt>
+			<pants>steamcaptain</pants>
+			<item>empty</item>
+			<overpants>barpatron1</overpants>
+			<eyeState>open</eyeState>
+		</skin>
+		<position>
+			<x>1470</x>
+			<y>458</y>
+		</position>
+		<direction>right</direction>
+	</npc>
+</npcs></file>
+	
+<file path="/scene.xml"><scene>
+	<sceneType>shortmain</sceneType>
+	<cameraLimits>
+		<left>0</left>
+		<top>0</top>
+		<right>2037</right>
+		<bottom>680</bottom>	
+	</cameraLimits>
+	<bounds>
+		<left>50</left>
+		<top>0</top>
+		<right>1970</right>
+		<bottom>615</bottom>
+	</bounds>
+	<data>dialog.xml,doors.xml,npcs.xml,sounds.xml,hits.xml</data>
+	<absoluteFilePaths>scenes/con3/shared/dialog.xml</absoluteFilePaths>
+	<assets>bundle.zip</assets>
+	<layers>
+		<layer>
+			<asset>background.zip</asset>
+		</layer>
+		<layer>
+			<asset>bitmap_hits.zip</asset>
+		</layer>
+		<layer hit="true">
+			<asset>interactive.zip</asset>
+		</layer>
+		<layer>
+			<asset>foreground.zip</asset>
+		</layer>
+	</layers>
+	<player>
+		<defaultPosition>
+			<x>1100</x>
+			<y>570</y>
+		</defaultPosition>
+		<defaultDirection>right</defaultDirection>
+	</player>
+</scene></file>
+	
+<file path="/sounds.xml"><sounds>
+	<sound type="music">
+		<asset fade="true" exclusiveType="true" loop="true">reign_of_omegon.mp3</asset>
+		<asset fade="true" exclusiveType="true" loop="true" triggeredByEvent="portal_opening">mighty_action_force_omegon.mp3</asset>
+	</sound>
+	<sound type="ambient">
+		<asset baseVolume="0.7" loop="true">air_ducts_2.mp3</asset>
+	</sound>
+	<sound action="doorOpened" type="effects">
+		<asset>door_squeaky_metal_swing_01.mp3</asset>
+	</sound>
+	<sound action="impact" type="effects">
+		<asset id="baseGround">ls_concrete_01.mp3, ls_concrete_02.mp3</asset>
+		<asset id="table">ls_plastic_01.mp3, ls_plastic_02.mp3</asset>
+		<asset id="microwave">ls_hollow_plastic_01.mp3, ls_hollow_plastic_02.mp3</asset>
+		<asset id="metal">ls_metal_01.mp3, ls_metal_02.mp3</asset>
+		<asset id="thin_metal">ls_thin_metal_01.mp3, ls_thin_metal_02.mp3</asset>
+		<asset id="bed">ls_spring_01.mp3, ls_spring_misc_furniture_01.mp3</asset>
+	</sound>
+	<sound action="step" type="effects">
+		<asset id="baseGround">fs_concrete_01.mp3, fs_concrete_02.mp3, fs_concrete_03.mp3, fs_concrete_04.mp3</asset>
+		<asset id="table">fs_plastic_01.mp3, fs_plastic_02.mp3,fs_plastic_03.mp3, fs_plastic_04.mp3</asset>
+		<asset id="microwave">fs_hollow_plastic_01.mp3, fs_hollow_plastic_02.mp3, fs_hollow_plastic_03.mp3, fs_hollow_plastic_04.mp3</asset>
+		<asset id="metal">fs_metal_01.mp3, fs_metal_02.mp3, fs_metal_03.mp3, fs_metal_04.mp3</asset>
+		<asset id="thin_metal">fs_thin_metal_01.mp3, fs_thin_metal_02.mp3, fs_thin_metal_03.mp3, fs_thin_metal_04.mp3</asset>
+		<asset id="bed">fs_cloth_01.mp3, fs_cloth_02.mp3, fs_cloth_03.mp3</asset>
+	</sound>
+</sounds></file>
+
+</merged>

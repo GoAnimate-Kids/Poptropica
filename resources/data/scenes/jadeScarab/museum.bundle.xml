@@ -1,0 +1,282 @@
+<merged>
+
+<file path="/hits.xml">
+		<hits>
+			<hit id="baseGround" platform="true">
+				<component type="platform"/>
+			</hit>
+			<hit id="platform" color="0xC2D6D6" platform="true">
+				<component type="platform"/>
+			</hit>
+		</hits>
+	</file>
+	<file path="/dialog.xml">
+		<dialogs>
+			<character id="player">
+				<statement>Gotta go after Gram.</statement>
+				<statement lockInput="true" triggeredByEvent="fan_invests_in_camels">Well, hopefully he will meet me back at the village...</statement>
+				<statement id="wait" triggerEvent="triggerEvent" triggerEventArgs="completeIsland">Wait! What if I get turned into a beetle!</statement>
+				<statement id="mummy">Seems a little stiff. Wonder if he knows a good Cairo-practor?</statement>
+			</character>
+			<character id="claira">
+				<statement lockInput="true" link="artifacts">Come! Look at this... this empty space of nothing! All we have is the information plaque!</statement>
+				<statement lockInput="true" id="init">Come, Come! Quickly now!</statement>
+				<statement lockInput="true" id="artifacts" link="response">None of the artifacts have arrived!</statement>
+				<conversation id="response">
+					<exchange>
+						<question lockInput="true">And you want me to find the artifacts?</question>
+						<answer lockInput="true" link="heard">Are you an archaeologist? Of course not! I want you to find what happened to the archaeologist!</answer>
+					</exchange>
+				</conversation>
+				<statement lockInput="true" id="heard" link="meet">I haven't heard from them in days. My brother, Bes, will drive you.</statement>
+				<statement lockInput="true" id="meet" triggerEvent="triggerEvent" triggerEventArgs="meet_bes,true">Meet him outside. Go now, go! Out!</statement>
+				<statement event="meet_bes">My brother will take you to the excavation. Go, go!</statement>
+				<statement event="finale_complete" link="deserve">Oh thank you, thank you! The exhibit is open and the Scarab is protected!</statement>
+				<statement id="deserve" link="wait" linkEntityId="player">I think you deserve this!</statement>
+				<statement event="hasItem_medal_jade_scarab">The Scarab remains where it belongs, with its people.</statement>
+			</character>
+			<character id="fan">
+				<statement triggerEvent="triggerEvent" triggerEventArgs="fact" link="fact">You wouldn't know it just by looking at me, but I really like camels.</statement>
+				<statement event="fact" link="response">Would you like to hear a camel fact?</statement>
+				<conversation id="response">
+					<exchange>
+						<question triggerEvent="triggerEvent" triggerEventArgs="next_fact">Sure!</question>
+					</exchange>
+					<exchange>
+						<question>I think I hear a camel calling my name... over there.</question>
+					</exchange>
+				</conversation>
+				<statement lockInput="true" id="fact1">When thirsty, camels can drink entire lakes! What I would pay to see such a thing!</statement>
+				<statement lockInput="true" id="fact2">The earth is perched on the back of a giant camel. Fun fact, you don't see her in pictures of space because she, like all camels, can go invisible when provoked.</statement>
+				<statement lockInput="true" id="fact3">The camel's only natural predator is the great white shark. All other animals fear the ferocity of the camel.</statement>
+				<statement lockInput="true" id="fact4">The pupa stage of the camel, the cameel, is highly venomous. They are seldom seen because they live beneath the sand.</statement>
+				<statement lockInput="true" id="fact5">Camels once stood on their hind legs and would bound after their prey, primarily lizards, much like today's gorillas.</statement>
+				<conversation event="camels_thirsty">
+					<exchange>
+						<question lockInput="true">For the low price of 9999 credits, you can witness a bunch of camels drink a bunch of water out in the desert!</question>
+						<answer lockInput="true" triggerEvent="triggerEvent" triggerEventArgs="fan_invests_in_camels,true">Whaaaaaat?! Where?! Nevermind that! I'll scour the whole desert until I find them!</answer>
+					</exchange>
+				</conversation>
+			</character>
+			<character id="tourist">
+				<statement>So much knowledge can be found in our ancient past.</statement>
+			</character>
+			<character id="husband">
+				<statement>They look just like you, love-mummy!</statement>
+			</character>
+			<character id="wife">
+				<statement>One more vacation with you and you wouldn't be wrong, shmoopy-pumpkin!</statement>
+			</character>
+		</dialogs>
+	</file>
+	<file path="/npcs.xml">
+		<npcs>
+			<npc id="claira">
+				<skin>
+					<gender>female</gender>
+					<skinColor>0xd38e6c</skinColor>
+					<hairColor>0x543D3B</hairColor>
+					<eyeState>open</eyeState>
+					<eyes>eyes</eyes>
+					<mouth>claira_worry</mouth>
+					<facial>is_claira</facial>
+					<shirt>is_claira</shirt>
+					<pants>is_claira</pants>
+				</skin>
+				<position>
+					<x>1650</x>
+					<y>970</y>
+				</position>
+				<range>
+					<x>0</x>
+					<y>0</y>
+				</range>
+				<direction>left</direction>
+			</npc>
+			<npc id="claira" event="finale_complete">
+				<skin>
+					<gender>female</gender>
+					<skinColor>0xd38e6c</skinColor>
+					<hairColor>0x543D3B</hairColor>
+					<eyeState>open</eyeState>
+					<eyes>eyes</eyes>
+					<mouth>youngsherpa</mouth>
+					<facial>is_claira</facial>
+					<shirt>is_claira</shirt>
+					<pants>is_claira</pants>
+				</skin>
+			</npc>
+			<npc id="fan">
+				<skin>
+					<gender>male</gender>
+					<skinColor>0x845a47</skinColor>
+					<hairColor>0xfff6600</hairColor>
+					<eyeState>open</eyeState>
+					<eyes>eyes</eyes>
+					<marks>freckles</marks>
+					<mouth>pfool</mouth>
+					<facial>empty</facial>
+					<hair>is_camel_fan</hair>
+					<pants>is_camel_fan</pants>
+					<shirt>is_camel_fan</shirt>
+				</skin>
+				<position>
+					<x>450</x>
+					<y>970</y>
+				</position>
+				<range>
+					<x>0</x>
+					<y>0</y>
+				</range>
+				<direction>left</direction>
+			</npc>
+			<npc id="tourist">
+				<skin>
+					<gender>male</gender>
+					<skinColor>0xCC7C5C</skinColor>
+					<hairColor>0x563C34</hairColor>
+					<eyeState>open</eyeState>
+					<eyes>eyes</eyes>
+					<mouth>thinking</mouth>
+					<facial>store_adventure_hiker</facial>
+					<hair>store_adventure_hiker</hair>
+					<shirt>store_adventure_hiker</shirt>
+					<pants>store_adventure_hiker</pants>
+					<pack>school_backpack</pack>
+					<overshirt>school_backpack</overshirt>
+				</skin>
+				<position>
+					<x>1150</x>
+					<y>470</y>
+				</position>
+				<range>
+					<x>0</x>
+					<y>0</y>
+				</range>
+				<direction>right</direction>
+			</npc>
+			<npc id="husband">
+				<skin>
+					<gender>male</gender>
+					<skinColor>0xFFBDAE</skinColor>
+					<hairColor>0x4C3F3D</hairColor>
+					<eyeState>open</eyeState>
+					<eyes>eyes</eyes>
+					<mouth>15</mouth>
+					<hair>nw_sportsowner</hair>
+					<shirt>july_b2</shirt>
+					<pants>is_tourist_guy</pants>
+					<overshirt>camera</overshirt>
+				</skin>
+				<position>
+					<x>700</x>
+					<y>470</y>
+				</position>
+				<range>
+					<x>0</x>
+					<y>0</y>
+				</range>
+				<direction>left</direction>
+				<faceSpeaker>false</faceSpeaker>
+			</npc>
+			<npc id="wife">
+				<skin>
+					<gender>female</gender>
+					<skinColor>0xFFA89C</skinColor>
+					<hairColor>0xFFD15F</hairColor>
+					<eyeState>open</eyeState>
+					<eyes>eyes</eyes>
+					<mouth>pcowgirl1</mouth>
+					<facial>is_tourist_girl</facial>
+					<hair>is_tourist_girl</hair>
+					<shirt>is_tourist_girl</shirt>
+					<pants>is_tourist_girl</pants>
+					<overshirt>camera</overshirt>
+				</skin>
+				<position>
+					<x>500</x>
+					<y>470</y>
+				</position>
+				<range>
+					<x>0</x>
+					<y>0</y>
+				</range>
+				<direction>right</direction>
+				<faceSpeaker>false</faceSpeaker>
+			</npc>
+		</npcs>
+	</file>
+	<file path="/sounds.xml">
+		<sounds>
+	<sound type="music">
+		<asset fade="true" exclusiveType="true" loop="true" baseVolume=".5">GrandUniversityA.mp3</asset>
+	</sound>
+	<sound type="effects" action="doorOpened">
+		<asset>openDoor_pushBar.mp3</asset>
+	</sound>
+	<sound type="effects" action="impact">
+		<asset id="platform">ls_concrete_01.mp3, ls_concrete_02.mp3</asset>
+		<asset id="baseGround">ls_concrete_01.mp3, ls_concrete_02.mp3</asset>
+	</sound>
+	<sound type="effects" action="step">
+		<asset id="platform">fs_concrete_01.mp3, fs_concrete_02.mp3, fs_concrete_03.mp3, fs_concrete_04.mp3</asset>
+		<asset id="baseGround">fs_concrete_01.mp3, fs_concrete_02.mp3, fs_concrete_03.mp3, fs_concrete_04.mp3</asset>
+	</sound>
+</sounds>
+	</file>
+	<file path="/scene.xml">
+		<scene>
+			<sceneType>default</sceneType>
+			<cameraLimits>
+				<left>0</left>
+				<top>0</top>
+				<right>2140</right>
+				<bottom>1012</bottom>
+			</cameraLimits>
+			<bounds>
+				<left>30</left>
+				<top>30</top>
+				<right>2080</right>
+				<bottom>1012</bottom>
+			</bounds>
+			<data>dialog.xml,doors.xml,npcs.xml,sounds.xml,hits.xml,vendor_cart.xml</data>
+			<assets>bundle.zip</assets>
+			<layers>
+				<layer>
+					<asset>background.zip</asset>
+				</layer>
+				<layer hit="true">
+					<asset>bitmap_hits.zip</asset>
+				</layer>
+				<layer hit="true">
+					<asset>interactive.zip</asset>
+				</layer>
+			</layers>
+			<player>
+				<defaultPosition>
+					<x>1060</x>
+					<y>940</y>
+				</defaultPosition>
+				<defaultDirection>right</defaultDirection>
+			</player>
+		</scene>
+	</file>
+	<file path="/doors.xml">
+		<doors>
+		<door id="door1">
+				<scene>game.scenes.jadeScarab.mainStreet.MainStreet</scene>
+				<x>1700</x>
+				<y>1400</y>
+				<label>
+					<text>Exit</text>
+					<type>exit3D</type>
+					<offset>
+						<x>0</x>
+						<y>0</y>
+					</offset>
+				</label>
+			</door>
+		</doors>
+	</file>
+
+</merged>

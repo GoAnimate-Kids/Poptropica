@@ -1,0 +1,405 @@
+
+<merged>
+
+<file path="/hits.xml">
+		<hits>
+			<hit id="baseGround" platform="true">
+				<component type="platform"/>
+			</hit>
+			<hit id="platform" color="0x333333" platform="true">
+				<component type="platform"/>
+			</hit>
+			<hit id="wood" color="0x2A1500" platform="true">
+				<component type="platform"/>
+			</hit>
+			<hit id="trees" color="0x00FF66" platform="true">
+				<component type="platform"/>
+			</hit>
+			<hit id="stone" color="0xC2D6D6" platform="true">
+				<component type="platform"/>
+			</hit>
+			<hit id="brick" color="0x660000" platform="true">
+				<component type="platform"/>
+			</hit>
+			<hit id="clay" color="0xFF3366" platform="true">
+				<component type="platform"/>
+			</hit>
+		</hits>
+	</file>
+	<file path="/custom.xml"><ad>
+		<offset>
+			<x>3550</x>
+			<y>1380</y>
+		</offset>
+	</ad></file>
+	<file path="/dialog.xml">
+		<dialogs>
+			<character id="player">
+				<statement lockInput="true" id="ok" triggerEvent="openPopup" triggerEventArgs="game.ui.popup.OneShotPopup,start_island.zip,scenes/jadeScarab/popups/">...Ok ...I guess I should go in after her.</statement>
+				<statement id="stopped" link="saw">It stopped–</statement>
+				<statement id="saw" link="wrong" linkEntityId="dr">-When I saw you.</statement>
+			</character>
+			<character id="claira">
+				<statement id="intro" lockInput="true" link="quick">You you you!</statement>
+				<statement lockInput="true" id="quick" triggerEvent="triggerEvent" triggerEventArgs="approach">Over here! Quickly now!</statement>
+				<statement lockInput="true" link="think">Yes you! See any other adventurers around here?</statement>
+				<statement lockInput="true" id="think" link="ok" linkEntityId="player" triggerEvent="triggerEvent" triggerEventArgs="intro_seen,true">You'd think they'd be used to how this works these days. Inside! Come, come!</statement>
+			</character>
+			<character id="dr">
+				<statement triggerEvent="triggerEvent" triggerEventArgs="hurt" link="hurt">Hold on, one second... Yes? Do you need something? Are you hurt?</statement>
+				<conversation id="hurt">
+					<exchange>
+						<question>Uh, no...</question>
+						<answer>Then leave me alone, be gone!</answer>
+					</exchange>
+					<exchange>
+						<question>It's... my heart!</question>
+						<answer link="stopped" linkEntityId="player">What is it? Palpitations? Pain? What?</answer>
+					</exchange>
+					<exchange>
+						<question>Watcha doin?</question>
+						<answer>I'm on the phone. I'm a busy businessman, be gone!</answer>
+					</exchange>
+				</conversation>
+				<statement id="wrong">...What is wrong with you? Are you sick? Be gone!</statement>
+			</character>
+			<character id="girl1">
+				<statement lockInput="true" link="step2" linkEntityId="girl2">Haha what a dork!</statement>
+				<statement lockInput="true" id="step2" link="what">Haha what a dork!</statement>
+				<conversation id="what">
+					<exchange>
+						<question lockInput="true">What are you talking about?</question>
+						<answer lockInput="true" link="response" linkEntityId="girl2">This guy was digging up a tomb and was totally swarmed by snakes!</answer>
+					</exchange>
+				</conversation>
+				<statement lockInput="true" triggerEvent="triggerEvent" triggerEventArgs="talked_girls" id="response">This guy was digging up a tomb and was totally swarmed by snakes!</statement>
+				<statement event="talked_girls">Hehehe!</statement>
+			</character>
+			<character id="girl2">
+				<statement lockInput="true" link="step2" linkEntityId="girl1">He's kinda cute!</statement>
+				<statement lockInput="true" id="step2" link="what">He's kinda cute!</statement>
+				<conversation id="what">
+					<exchange>
+						<question lockInput="true">What are you talking about?</question>
+						<answer lockInput="true" link="response" linkEntityId="girl1">It's the Curse of the Jade Scarab! Lol!</answer>
+					</exchange>
+				</conversation>
+				<statement lockInput="true" triggerEvent="triggerEvent" triggerEventArgs="talked_girls" id="response">It's the Curse of the Jade Scarab! Lol!</statement>
+				<statement event="talked_girls">Lol!</statement>
+			</character>
+			<character id="husband">
+				<statement>Isn't this all so exciting, sugar-poo!?</statement>
+			</character>
+			<character id="wife">
+				<statement>By golly, it sure is, honey-bum!</statement>
+			</character>
+			<character id="bes">
+				<statement lockInput="true" link="response">Yo, yo, yo! I'm your ride!</statement>
+				<conversation id="response">
+					<exchange>
+						<question lockInput="true">Thanks but I pretty much walk everywhere even though I have a big yellow blimp.</question>
+						<answer lockInput="true" link="bes_gives_tips" triggerEvent="triggerEvent" triggerEventArgs="get_in_car">It's pretty far and wicked hot. Just jump in, dude!</answer>
+					</exchange>
+				</conversation>
+				<statement lockInput="true" event="bes_gives_tips" triggerEvent="loadScene" triggerEventArgs="game.scenes.jadeScarab.adStreet.AdStreet">Alright alright, we'll be there in no time!</statement>
+				<statement event="finale_complete">Sold my wheels, I'm saving up for a blimp!</statement>
+			</character>
+		</dialogs>
+	</file>
+	<file path="/npcs.xml">
+		<npcs>
+			<npc id="claira">
+				<skin>
+					<gender>female</gender>
+					<skinColor>0xd38e6c</skinColor>
+					<hairColor>0x543D3B</hairColor>
+					<eyeState>open</eyeState>
+					<eyes>eyes</eyes>
+					<mouth>claira_worry</mouth>
+					<facial>is_claira</facial>
+					<shirt>is_claira</shirt>
+					<pants>is_claira</pants>
+				</skin>
+				<position>
+					<x>1900</x>
+					<y>1400</y>
+				</position>
+				<range>
+					<x>0</x>
+					<y>0</y>
+				</range>
+				<direction>left</direction>
+			</npc>
+			<npc id="girl1">
+				<skin>
+					<gender>female</gender>
+					<skinColor>0x9B6B5A</skinColor>
+					<hairColor>0x2E4568</hairColor>
+					<eyeState>open</eyeState>
+					<eyes>eyes</eyes>
+					<mouth>fortunehunter</mouth>
+					<facial>is_hijab</facial>
+					<shirt>jan_member_girl</shirt>
+					<pants>jan_member_girl</pants>
+					<overshirt>is_hijab</overshirt>
+				</skin>
+				<position>
+					<x>1000</x>
+					<y>1390</y>
+				</position>
+				<range>
+					<x>0</x>
+					<y>0</y>
+				</range>
+				<faceSpeaker>false</faceSpeaker>
+				<direction>right</direction>
+			</npc>
+			<npc id="girl2">
+				<skin>
+					<gender>female</gender>
+					<skinColor>0xC18165</skinColor>
+					<hairColor>0x913345</hairColor>
+					<eyeState>open</eyeState>
+					<eyes>eyes</eyes>
+					<mouth>steamsully</mouth>
+					<facial>is_hijab</facial>
+					<shirt>is_girl</shirt>
+					<pants>jan_member_girl</pants>
+					<overshirt>is_hijab</overshirt>
+				</skin>
+				<position>
+					<x>1100</x>
+					<y>1390</y>
+				</position>
+				<range>
+					<x>0</x>
+					<y>0</y>
+				</range>
+				<faceSpeaker>false</faceSpeaker>
+				<direction>left</direction>
+			</npc>
+			<npc id="dr">
+				<skin>
+					<gender>male</gender>
+					<skinColor>0xE2A47A</skinColor>
+					<hairColor>0x3A2A24</hairColor>
+					<eyeState>squint</eyeState>
+					<eyes>eyes</eyes>
+					<mouth>thinking</mouth>
+					<facial>boardwalk_sunglassesboys</facial>
+					<hair>is_business</hair>
+					<shirt>sponsor_tucker</shirt>
+					<pants>blinked</pants>
+				</skin>
+				<position>
+					<x>2680</x>
+					<y>1390</y>
+				</position>
+				<range>
+					<x>0</x>
+					<y>0</y>
+				</range>
+				<direction>left</direction>
+			</npc>
+			<npc id="husband">
+				<skin>
+					<gender>male</gender>
+					<skinColor>0xFFBDAE</skinColor>
+					<hairColor>0x4C3F3D</hairColor>
+					<eyeState>open</eyeState>
+					<eyes>eyes</eyes>
+					<mouth>15</mouth>
+					<hair>nw_sportsowner</hair>
+					<shirt>july_b2</shirt>
+					<pants>is_tourist_guy</pants>
+					<overshirt>camera</overshirt>
+				</skin>
+				<position>
+					<x>3100</x>
+					<y>1390</y>
+				</position>
+				<range>
+					<x>0</x>
+					<y>0</y>
+				</range>
+				<direction>left</direction>
+				<faceSpeaker>false</faceSpeaker>
+			</npc>
+			<npc id="wife">
+				<skin>
+					<gender>female</gender>
+					<skinColor>0xFFA89C</skinColor>
+					<hairColor>0xFFD15F</hairColor>
+					<eyeState>open</eyeState>
+					<eyes>eyes</eyes>
+					<mouth>pcowgirl1</mouth>
+					<facial>is_tourist_girl</facial>
+					<hair>is_tourist_girl</hair>
+					<shirt>is_tourist_girl</shirt>
+					<pants>is_tourist_girl</pants>
+					<overshirt>camera</overshirt>
+				</skin>
+				<position>
+					<x>3000</x>
+					<y>1390</y>
+				</position>
+				<range>
+					<x>0</x>
+					<y>0</y>
+				</range>
+				<direction>left</direction>
+				<faceSpeaker>false</faceSpeaker>
+			</npc>
+			<npc id="bes" event="meet_bes">
+				<skin>
+					<gender>male</gender>
+					<skinColor>0xD38E6C</skinColor>
+					<hairColor>0x553D3A</hairColor>
+					<eyeState>casual</eyeState>
+					<eyes>eyes</eyes>
+					<marks>empty</marks>
+					<mouth>15</mouth>
+					<facial>empty</facial>
+					<hair>is_bes</hair>
+					<pants>is_bes</pants>
+					<shirt>is_bes</shirt>
+				</skin>
+				<direction>right</direction>
+				<position>
+					<x>1460</x>
+					<y>1370</y>
+				</position>
+				<faceSpeaker>false</faceSpeaker>
+			</npc>
+			<npc id="bes" event="finale_complete">
+				<skin>
+					<gender>male</gender>
+					<skinColor>0xD38E6C</skinColor>
+					<hairColor>0x553D3A</hairColor>
+					<eyeState>casual</eyeState>
+					<eyes>eyes</eyes>
+					<marks>empty</marks>
+					<mouth>15</mouth>
+					<facial>empty</facial>
+					<hair>is_bes</hair>
+					<pants>is_bes</pants>
+					<shirt>is_bes</shirt>
+				</skin>
+				<direction>right</direction>
+				<position>
+					<x>1435</x>
+					<y>1390</y>
+				</position>
+				<faceSpeaker>false</faceSpeaker>
+			</npc>
+		</npcs>
+	</file>
+	<file path="/sounds.xml">
+		<sounds>
+	<sound type="music">
+		<asset fade="true" exclusiveType="true" loop="true" baseVolume=".3">collection_game.mp3</asset>
+	</sound>
+	<sound type="ambient">
+		<asset loop="true" baseVolume="3">traffic_jam.mp3</asset>
+	</sound>
+	<sound type="effects" action="doorOpened">
+		<asset>openDoor_pushBar.mp3</asset>
+	</sound>
+	<sound type="effects" action="impact">
+		<asset id="platform">ls_concrete_01.mp3, ls_concrete_02.mp3</asset>
+		<asset id="baseGround">ls_concrete_01.mp3, ls_concrete_02.mp3</asset>
+		<asset id="trees">ls_leaves_01.mp3, ls_leaves_02.mp3</asset>
+		<asset id="stone">ls_concrete_2_01.mp3, ls_concrete_2_02.mp3</asset>
+		<asset id="clay">ls_clay_tile_01.mp3, ls_clay_tile_02.mp3</asset>
+		<asset id="wood">ls_wood_plank_01.mp3, ls_wood_plank_02.mp3</asset>
+		<asset id="bricks">ls_brick_01.mp3, ls_brick_02.mp3</asset>
+	</sound>
+	<sound type="effects" action="step">
+		<asset id="platform">fs_concrete_01.mp3, fs_concrete_02.mp3, fs_concrete_03.mp3, fs_concrete_04.mp3</asset>
+		<asset id="baseGround">fs_concrete_01.mp3, fs_concrete_02.mp3, fs_concrete_03.mp3, fs_concrete_04.mp3</asset>
+		<asset id="trees">fs_leaves_01.mp3, fs_leaves_02.mp3, fs_leaves_03.mp3, fs_leaves_04.mp3</asset>
+		<asset id="stone">fs_concrete_2_01.mp3, fs_concrete_2_02.mp3, fs_concrete_2_03.mp3, fs_concrete_04.mp3</asset>
+		<asset id="clay">fs_clay_tile_01.mp3, fs_clay_tile_02.mp3, fs_clay_tile_03.mp3, fs_clay_tile_04.mp3</asset>
+		<asset id="wood">fs_wood_plank_01.mp3, fs_wood_plank_02.mp3, fs_wood_plank_03.mp3, fs_wood_plank_04.mp3</asset>
+		<asset id="bricks">fs_brick_01.mp3, fs_brick_02.mp3, fs_brick_03.mp3, fs_brick_04.mp3</asset>
+	</sound>
+</sounds>
+	</file>
+	<file path="/scene.xml">
+		<scene>
+			<sceneType>mainstreet</sceneType>
+			<cameraLimits>
+				<left>0</left>
+				<top>0</top>
+				<right>3934</right>
+				<bottom>1474</bottom>
+			</cameraLimits>
+			<bounds>
+				<left>30</left>
+				<top>30</top>
+				<right>4003</right>
+				<bottom>1398</bottom>
+			</bounds>
+			<data>dialog.xml,doors.xml,npcs.xml,sounds.xml,hits.xml</data>
+			<assets>bundle.zip,foreground2.zip,foregroundFinale.zip</assets>
+			<layers>
+				<layer>
+					<asset>background.zip</asset>
+				</layer>
+				<layer hit="true">
+					<asset>bitmap_hits.zip</asset>
+				</layer>
+				<layer hit="true">
+					<asset>interactive.zip</asset>
+				</layer>
+				<layer event="meet_bes" id="foreground2">
+					<asset>foreground2.zip</asset>
+				</layer>
+				<layer event="finale_complete" id="foreground2">
+					<asset>foregroundFinale.zip</asset>
+				</layer>
+				<layer>
+					<asset>foreground.zip</asset>
+				</layer>
+			</layers>
+			<player>
+				<defaultPosition>
+					<x>650</x>
+					<y>1400</y>
+				</defaultPosition>
+				<defaultDirection>right</defaultDirection>
+			</player>
+		</scene>
+	</file>
+	<file path="/doors.xml">
+		<doors>
+		<door id="door_museum">
+				<scene>game.scenes.jadeScarab.museum.Museum</scene>
+				<x>1050</x>
+				<y>950</y>
+				<label>
+					<text>Enter</text>
+					<type>exit3D</type>
+					<offset>
+						<x>0</x>
+						<y>0</y>
+					</offset>
+				</label>
+			</door>
+			<door id="door_map">
+				<scene>game.scenes.map.map.Map</scene>
+				<x>200</x>
+				<y>614</y>
+				<label>
+					<text>TRAVEL</text>
+					<type>exitUp</type>
+					<offset>
+						<x>0</x>
+						<y>0</y>
+					</offset>
+				</label>
+			</door>
+		</doors>
+	</file>
+
+</merged>

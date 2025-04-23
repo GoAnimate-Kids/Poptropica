@@ -1,0 +1,73 @@
+<merged>
+
+<file path="/progress.xml"><progress>
+	<island>hub</island>
+	<events></events>
+</progress></file>
+
+<file path="/island.xml"><island>
+	<name>Home Island</name>
+	<eventsClass>game.scenes.hub.HubEvents</eventsClass>
+	<gameVersion>AS3</gameVersion>
+	<island>hub</island>
+	
+	<permanentEvents>
+		<event>has_home</event>
+		<event>defeated_dealer</event>
+		<event>complete_cinderella</event>
+		<event>complete_redridinghood</event>
+		<event>complete_snowwhite</event>
+		<event>bear_event_complete</event>
+		<event>candy_event_complete</event>
+		<event>baron_event_complete</event>
+		<event>start_amelias_quest</event>
+		<event>got_cargo</event>
+		<event>complete_amelias_quest</event>
+		<event>start_rumples_quest</event>
+		<event>found_clue_2</event>
+		<event>found_clue_3</event>
+		<event>complete_rumples_quest</event>
+		<event>start_barons_quest</event>
+		<event>start_baron_bash</event>
+		<event>complete_barons_quest</event>
+		<event>start_goofball_quest</event>
+		<event>restored_goofballquest1</event>
+		<event>restored_goofballquest2</event>
+		<event>restored_goofballquest3</event>
+		<event>restored_goofballquest4</event>
+		<event>restored_goofballquest</event>
+		<event>complete_goofball_quest</event>
+	</permanentEvents>
+	
+	<itemIdMap>
+		<item id="ameliaCargo">1062</item>
+		<item id="rumpleRiddle">1063</item>
+		<item id="claretasToy">1072</item>
+	</itemIdMap>
+	
+	<firstScene>
+		<scene>game.scenes.hub.town.Town</scene>
+		<x>1650</x>
+		<y>780</y>
+		<direction>left</direction>
+		<label>
+			<text>Exit</text>
+			<type>exit3D</type>
+			<offset>
+				<x>0</x>
+				<y>0</y>
+			</offset>
+		</label>
+	</firstScene>
+</island></file>
+
+<file path="/eventGroups.xml"><groups>
+	<group event="start_poptropica_quest">
+		<and>
+			<event type="has_home"/>
+			<event type="poptropica_quest_step2_started" not="true"/>
+		</and>
+	</group>
+</groups></file>
+
+</merged>

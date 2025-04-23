@@ -1,0 +1,112 @@
+<merged>
+
+<file path="/hits.xml"><hits>
+	<hit color="0x00FF00" id="ground" platform="true">
+		<component type="platform"/>
+	</hit>
+	<hit id="baseGround" platform="true">
+		<component type="platform"/>
+	</hit>
+	<hit color="0xff6600" id="wall">
+		<component type="wall"/>
+	</hit>
+	<hit color="0xffcc00" id="ceiling">
+		<component type="ceiling"/>#FF1300
+	</hit>
+	<hit color="0xff0000" id="bounce" platform="true">
+		<component type="bounce">
+			<velocity>
+				<x>0</x>
+				<y>-800</y>
+			</velocity>
+		</component>
+	</hit>
+	<hit color="0xA8CFFF" id="ice" platform="true">
+		<component type="platform">
+		<stickToPlatforms>true</stickToPlatforms>
+			<friction>
+				<x>500</x>
+				<y>0</y>
+			</friction>
+		</component>
+	</hit>
+</hits></file>
+
+<file path="/dialog.xml"><dialogs>
+</dialogs></file>
+
+<file path="/sounds.xml"><sounds>
+	<sound type="music">
+		<asset loop="true">sneaky_shop_theme.mp3</asset>
+	</sound>
+	<sound action="doorOpened" type="effects">
+		<asset>openDoor_pushBar.mp3</asset>
+	</sound>
+	<sound action="impact" type="effects">
+		<asset id="floor">ls_concrete_01.mp3, ls_concrete_02.mp3</asset>
+	</sound>
+	<sound action="step" type="effects">
+		<asset id="floor">fs_concrete_01.mp3, fs_concrete_02.mp3</asset>
+	</sound>
+</sounds></file>
+
+<file path="/islandStore.xml"><store>
+	<item price="75" memOnly="false">15012</item>
+	<item price="250" memOnly="false">15013</item>
+	<item price="300" memOnly="false">15014</item>
+	<item price="350" memOnly="false">15015</item>
+</store></file>
+
+<file path="/scene.xml"><scene>
+	<sceneType>default</sceneType>
+	<cameraLimits>
+		<left>0</left>
+		<top>0</top>
+		<right>1235</right>
+		<bottom>1020</bottom>	
+	</cameraLimits>
+	<bounds>
+		<left>40</left>
+		<top>0</top>
+		<right>1200</right>
+		<bottom>1000</bottom>
+	</bounds>
+	<data>doors.xml,sounds.xml,hits.xml,dialog.xml</data>
+	<assets>bundle.zip</assets>
+	<layers>
+		<layer>
+			<asset>background.zip</asset>
+		</layer>
+		<layer hit="true">
+			<asset>bitmap_hits.zip</asset>
+		</layer>
+		<layer hit="true">
+			<asset>interactive.zip</asset>
+		</layer>
+	</layers>
+	<player>
+		<defaultPosition>
+			<x>570</x>
+			<y>1000</y>
+		</defaultPosition>
+		<defaultDirection>right</defaultDirection>
+	</player>
+</scene></file>
+
+<file path="/doors.xml"><doors>
+	<door id="doorMainStreet">
+		<scene>game.scenes.timmy.mainStreet.MainStreet</scene>
+		<x>3300</x>
+		<y>1560</y>
+		<label>
+			<text>Exit</text>
+			<type>exit3D</type>
+			<offset>
+				<x>0</x>
+				<y>0</y>
+			</offset>
+		</label>
+	</door>
+</doors></file>
+
+</merged>

@@ -1,0 +1,226 @@
+<merged>
+
+<file path="/hits.xml">
+		<hits>
+	<hit id="baseGround" platform="true">
+		<component type="platform"/>
+	</hit>
+	<hit id="platform" color="0x990099" platform="true">
+		<component type="platform"/>
+	</hit>
+	<hit id="wall" color="0xff6600">
+		<component type="wall"/>
+	</hit>
+	<hit id="wall2" color="0xff3300">
+		<component type="wall"/>
+	</hit>
+	<hit id="dirt" color="0x993300" platform="true">
+		<component type="platform"/>
+	</hit>
+	<hit id="stone" color="0xC2D6D6" platform="true">
+		<component type="platformRebound">
+			<bounce>0</bounce>
+		</component>
+		<component type="platform"/>
+	</hit>
+</hits>
+	</file>
+	<file path="/dialog.xml">
+		<dialogs>
+			<character id="player">
+				<statement lockInput="true">Looks like it's caved in... I'll need to find a way through.</statement>
+				<statement id="digging">Hmm... someone's been digging here. Must have been before the flood?</statement>
+				<statement triggeredByEvent="no_use">No use using that here.</statement>
+				<statement id="need_merkhet">Looks like one of these contraptions is missing.</statement>
+				<statement id="hieroglyphics">There are a bunch of engravings of pictures here, but what do they mean?</statement>
+				<statement lockInput="true" triggeredByEvent="no_use_rubbing">Someone in town must be able to read these.</statement>
+				<statement id="scarab" link="shiny" triggerEvent="triggerEvent" triggerEventArgs="setPart-item-jade_scarab">The Jade Scarab!</statement>
+				<statement id="shiny" triggerEvent="triggerEvent" triggerEventArgs="take_scarab">Hey check this out! It's sparkly...</statement>
+				<statement id="shocking" link="someone" linkEntityId="foreman">Shocking.</statement>
+				<statement id="psycho" triggerEvent="triggerEvent" triggerEventArgs="reveal_secret_door,true">Ah! What kinda psycho locks someone in a tomb!?</statement>
+				<statement id="step1">In a time of famine, the pharaoh pleaded with the gods.</statement>
+				<statement id="step2">The gods gifted the Scarab to the pharaoh and his people.</statement>
+				<statement id="step3">Overnight, life and prosperity swept the land.</statement>
+				<statement id="step4">Bringing bounties of crops, livestock, and fish.</statement>
+				<statement id="wrong" link="step1">I must have messed up the order.</statement>
+				<statement id="no_clue">Maybe I should ask around if anyone knows what these images mean.</statement>
+				<statement id="right">Aha, it all makes sense now.</statement>
+				<statement id="lucky">I have no clue how, but I got it right I guess.</statement>
+				<statement id="no_use_rubbing">I need to find someone to help me make sense of this.</statement>
+			</character>
+			<character id="foreman">
+				<statement id="curse" link="me">Ha! Who needs a curse with you around?!</statement>
+				<statement id="me" link="shocking" linkEntityId="player">I was the one behind all the curse...iness! Me!</statement>
+				<statement id="someone" triggerEvent="triggerEvent" triggerEventArgs="leave">Someone is going to pay a fortune for this. Bye bye!</statement>
+			</character>
+		</dialogs>
+	</file>
+	<file path="/npcs.xml">
+		<npcs>
+			<npc id="foreman" event="take_scarab">
+				<skin>
+					<gender>male</gender>
+					<skinColor>0xad765e</skinColor>
+					<hairColor>0xfff6600</hairColor>
+					<eyeState>squint</eyeState>
+					<eyes>eyes</eyes>
+					<marks>is_foreman</marks>
+					<mouth>prisoner4</mouth>
+					<hair>is_foreman</hair>
+					<pants>is_foreman</pants>
+					<shirt>is_foreman</shirt>
+				</skin>
+				<position>
+					<x>400</x>
+					<y>1570</y>
+				</position>
+				<range>
+					<x>0</x>
+					<y>0</y>
+				</range>
+				<direction>right</direction>
+			</npc>
+		</npcs>
+	</file>
+	<file path="/sounds.xml">
+		<sounds>
+	<sound type="music">
+		<asset>arabian_twang2.mp3</asset>
+	</sound>
+	<sound type="ambient">
+		<asset fade="true" loop="true" baseVolume=".5">cave_temple.mp3</asset>
+	</sound>
+	<sound type="effects" action="doorOpened">
+		<asset>openDoor_pushBar.mp3</asset>
+	</sound>
+	<sound action="climb" type="effects">
+		<asset allowOverlap="false" id="climb1">rope_strain_02.mp3</asset>
+		<asset allowOverlap="false" id="climb2">rope_strain_02.mp3</asset>
+	</sound>
+	<sound type="effects">
+		<asset id="digger_anim" modifiers="effects,position" baseVolume=".7" triggeredByEvent="digger_noise">digger.mp3</asset>
+		<asset triggeredByEvent="push1">grinding_stone_02.mp3</asset>
+		<asset triggeredByEvent="push2">grinding_stone_03.mp3</asset>
+		<asset triggeredByEvent="push3">grinding_stone_02.mp3</asset>
+		<asset triggeredByEvent="push4">grinding_stone_03.mp3</asset>
+		<asset triggeredByEvent="push1">grinding_stone_02.mp3</asset>
+		<asset triggeredByEvent="stone_door_opening">heavy_gritty_drag_03.mp3</asset>
+		<asset triggeredByEvent="chamber_opens">myth_min_door_open_01.mp3</asset>
+		<asset triggeredByEvent="chamber_bounces">rock_hit_02.mp3</asset>
+		<asset triggeredByEvent="chamber_closes">myth_min_door_open_01.mp3</asset>
+		<asset triggeredByEvent="chamber_slam">rock_hit_01.mp3</asset>
+		<asset triggeredByEvent="cat_appears" baseVolume="1.5">arabian_flute.mp3</asset>
+		<asset triggeredByEvent="leap">whoosh_08.mp3</asset>
+	</sound>
+	<sound type="effects" action="impact">
+		<asset id="platform">ls_cave_pond_splash_01.mp3, ls_cave_pond_splash_02.mp3, ls_cave_pond_splash_03.mp3</asset>
+		<asset id="baseGround">ls_linoleum_verb_01.mp3, ls_linoleum_verb_02.mp3</asset>
+		<asset id="dirt">ls_brick_verb_01.mp3, ls_brick_verb_02.mp3</asset>
+		<asset id="stone">ls_linoleum_verb_01.mp3, ls_linoleum_verb_02.mp3</asset>
+	</sound>
+	<sound type="effects" action="step">
+		<asset id="platform">fs_cave_puddle_01.mp3, fs_cave_puddle_02.mp3, fs_cave_puddle_03.mp3, fs_cave_puddle_04.mp3</asset>
+		<asset id="baseGround">fs_linoleum_verb_01.mp3, fs_linoleum_verb_02.mp3, fs_linoleum_verb_03.mp3, fs_linoleum_verb_04.mp3</asset>
+		<asset id="dirt">fs_brick_verb_01.mp3, fs_brick_verb_02.mp3, fs_brick_verb_03.mp3, fs_brick_verb_04.mp3</asset>
+		<asset id="stone">fs_linoleum_verb_01.mp3, fs_linoleum_verb_02.mp3, fs_linoleum_verb_03.mp3, fs_linoleum_verb_04.mp3</asset>
+	</sound>
+</sounds>
+	</file>
+	<file path="/items.xml"><items>
+		<item>
+			<id>charcoal</id>
+			<asset>charcoal.zip</asset>
+			<x>2070</x>
+			<y>670</y>
+			<label>
+				<text>Examine</text>
+				<type>exitDown</type>
+			</label>
+		</item>
+		<item>
+			<id>hawk_blinder</id>
+			<asset>hawk_blinder.zip</asset>
+			<x>900</x>
+			<y>670</y>
+			<label>
+				<text>Examine</text>
+				<type>exitDown</type>
+			</label>
+		</item>
+	</items></file>
+	<file path="/scene.xml">
+		<scene>
+			<sceneType>default</sceneType>
+			<cameraLimits>
+				<left>0</left>
+				<top>0</top>
+				<right>3200</right>
+				<bottom>1700</bottom>
+			</cameraLimits>
+			<bounds>
+				<left>110</left>
+				<top>110</top>
+				<right>3090</right>
+				<bottom>1590</bottom>
+			</bounds>
+			<data>dialog.xml,doors.xml,npcs.xml,sounds.xml,hits.xml,vendor_cart.xml</data>
+			<assets>bundle.zip</assets>
+			<layers>
+				<layer hit="true">
+					<asset>interactive2.zip</asset>
+				</layer>
+				<layer>
+					<asset>background.zip</asset>
+				</layer>
+				<layer hit="true">
+					<asset>bitmap_hits.zip</asset>
+				</layer>
+				<layer hit="true">
+					<asset>interactive.zip</asset>
+				</layer>
+				<layer>
+					<asset>foreground.zip</asset>
+				</layer>
+			</layers>
+			<player>
+				<defaultPosition>
+					<x>450</x>
+					<y>690</y>
+				</defaultPosition>
+				<defaultDirection>right</defaultDirection>
+			</player>
+		</scene>
+	</file>
+	<file path="/doors.xml">
+		<doors>
+		<door id="door_village">
+				<scene>game.scenes.jadeScarab.village.Village</scene>
+				<x>1700</x>
+				<y>1930</y>
+				<label>
+					<text>Exit</text>
+					<type>exit3D</type>
+					<offset>
+						<x>0</x>
+						<y>0</y>
+					</offset>
+				</label>
+			</door>
+			<!-- would like to associate art with this door so they both can appear at the same time-->
+			<door id="door_crack">
+				<scene>game.scenes.jadeScarab.tombEscape.TombEscape</scene>
+				<x>100</x>
+				<y>323</y>
+				<label>
+					<text>Escape</text>
+					<type>exitDown</type>
+					<offset>
+						<x>0</x>
+						<y>0</y>
+					</offset>
+				</label>
+			</door>
+		</doors>
+	</file>
+
+</merged>

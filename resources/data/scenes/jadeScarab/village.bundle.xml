@@ -1,0 +1,681 @@
+<merged>
+
+<file path="/hits.xml">
+		<hits>
+			<hit id="baseGround" platform="true">
+				<component type="platform"/>
+			</hit>
+			<hit id="wood" color="0x2A1500" platform="true">
+				<component type="platform"/>
+			</hit>
+			<hit id="wall" color="0xff6600">
+				<component type="wall"/>
+			</hit>
+			<hit id="trees" color="0x00FF66" platform="true">
+				<component type="platform"/>
+			</hit>
+			<hit id="metal" color="0xF4DFA3" platform="true">
+				<component type="platform"/>
+			</hit>
+			<hit id="clay" color="0xFF3366" platform="true">
+				<component type="platform"/>
+			</hit>
+			<hit id="hay" color="0x006633" platform="true">
+				<component type="platform"/>
+			</hit>
+			<hit id="sand" color="0xFFA84A" platform="true">
+				<component type="platform"/>
+			</hit>
+			<hit id="bounce" color="0xFFA1C0" platform="true">
+				<component type="bounce">
+					<velocity>
+						<x>0</x>
+						<y>-1000</y>
+					</velocity>
+				</component>
+			</hit>
+			<hit id="water" color="0x0000ff">
+				<!-- This causes a splash on the surface in a defined color range. -->
+				<component type="water">
+					<splashColor1>0x41B6E1</splashColor1>
+					<splashColor2>0x4DCBDE</splashColor2>
+					<density>1</density>
+					<viscosity>.96</viscosity>
+				</component>
+			</hit>
+		</hits>
+	</file>
+	<file path="/dialog.xml">
+		<dialogs>
+			<character id="player">
+				<statement id="camels">I think I saw someone back at the museum that would pay top dollar to see these camels...</statement>
+				<statement id="thirsty">They sure look thirsty...</statement>
+				<statement lockInput="true" id="no_need_merchant" triggerEvent="triggerEvent" triggerEventArgs="merchant_curse" link="merchant_curse" linkEntityId="merchant">Hmm, doesn't look like any of these will help me yet.</statement>
+				<statement lockInput="true" id="oof" link="ohwell">Oof! Maybe the curse is real...</statement>
+				<statement lockInput="true" id="ohwell" triggerEvent="triggerEvent" triggerEventArgs="tomb_opened,true">Well, time to go inside the tomb!</statement>
+				<statement triggeredByEvent="no_use">No use using that here.</statement>
+				<statement id="no_use_hawk">It really loves eating those bugs...</statement>
+				<statement id="thought" link="grandson" linkEntityId="merchant">Yes, yes, the merkhet...</statement>
+				<statement id="bad">I know you're an old lady, but you should feel bad for that.</statement>
+				<statement lockInput="true" id="part1" link="part2">In a time of famine, the pharaoh pleaded with the gods.</statement>
+				<statement id="part2" lockInput="true" link="part3">The gods gifted the Scarab to the pharaoh and his people.</statement>
+				<statement id="part3" lockInput="true" link="part4">Overnight, life and prosperity swept the land.</statement>
+				<statement id="part4" lockInput="true">Bringing bounties of crops, livestock, and fish.</statement>
+			</character>
+			<character id="bes">
+				<statement lockInput="true" id="init" triggerEvent="triggerEvent" triggerEventArgs="bes_gives_tips,true" link="sandvich">Here's the village! Go find the excavation crew down at the dig!</statement>
+				<statement lockInput="true" id="sandvich" link="bes_gives_tips">Now, I gotta find me a sandwich or someth'n...</statement>
+				<conversation event="bes_gives_tips">
+					<exchange>
+						<question forceOnScreen="true">Where is the dig site?</question>
+						<answer>At the bottom of the village, can't miss it.</answer>
+					</exchange>
+					<exchange>
+						<question forceOnScreen="true">How do I get inside the tomb?</question>
+						<answer>I bet the people in town would help. They always return a favor.</answer>
+					</exchange>
+					<exchange>
+						<question forceOnScreen="true">Who can help?</question>
+						<answer triggerEvent="triggerEvent" triggerEventArgs="give_hint">Try looking for...</answer>
+					</exchange>
+				</conversation>
+				<statement id="step1">Howard Diggory, he's leading the expedition.</statement>
+				<statement id="step2">Maybe the camel guy?</statement>
+				<statement id="step3">That old falconer dude offered to help if you can get his hawk back.</statement>
+				<statement id="step4">The merchant knows her artifacts, she could probably help.</statement>
+				<statement id="step5">The merchant was hollering after her grandson. He ran off with something important.</statement>
+			</character>
+			<character id="farmer">
+				<statement>They never should have dug that place up! The curse has brought locusts to my field!</statement>
+				<statement id="curse1">It's the curse!</statement>
+				<statement id="curse2">Cursed!</statement>
+			</character>
+			<character id="guide">
+				<statement lockInput="true" link="response">Camel tour! Camel tour for the low, low price of 9999 credits!</statement>
+				<conversation id="response">
+					<exchange>
+						<question lockInput="true">Over 9000? That's crazy!</question>
+						<answer lockInput="true" triggerEvent="triggerEvent" triggerEventArgs="camels_thirsty,true" link="camels_thirsty">I'm desperate to stay afloat! The curse has chased off all the tourists!</answer>
+					</exchange>
+				</conversation>
+				<statement lockInput="true" event="camels_thirsty" link="camels" linkEntityId="player">I can barely afford water for my camels!</statement>
+				<statement lockInput="true" event="fan_invests_in_camels" link="dig_site">With this kind of money, I can open a whole camel theme park! The curse is broken!</statement>
+				<statement lockInput="true" id="dig_site" triggerEvent="triggerEvent" triggerEventArgs="camels_drinkup_flood">Ahem, yes you may take the camels down to the dig site.</statement>
+				<statement event="tomb_opened">Now that I can afford water, my camels will no longer go thirsty.</statement>
+			</character>
+			<character id="fan">
+				<statement lockInput="true" link="fan_invests_in_camels" linkEntityId="guide">I hope I don't pass out from excitement!</statement>
+				<statement event="tomb_opened">I hope I don't pass out from excitement!</statement>
+			</character>
+			<character id="falconer">
+				<statement lockInput="true" link="help">I'm sorry, I cannot help you, my curse-ed falcon flew the coop!</statement>
+				<conversation id="help">
+					<exchange>
+						<question lockInput="true">I bet I could get it back for you.</question>
+						<answer lockInput="true">You could? I would certainly return the favor, friend!</answer>
+					</exchange>
+				</conversation>
+				<statement lockInput="true" event="returned_falcon" link="eyes">Horus! You've come back to me!</statement>
+				<statement lockInput="true" id="eyes" triggerEvent="loadScene" triggerEventArgs="game.scenes.jadeScarab.desertOverworld.DesertOverworld">Horus is my eyes in the sky. I think he can help you find that missing equipment in the desert!</statement>
+				<statement event="returned_digger">Who's a good birdy-boy?!</statement>
+			</character>
+			<character id="diggory">
+				<conversation>
+					<exchange>
+						<question lockInput="true">Are you the Archaeologist in charge of the dig?</question>
+						<answer lockInput="true" link="history">Dig? What dig? Everything's gone wrong and we might as well bury the whole thing once again!</answer>
+					</exchange>
+				</conversation>
+				<statement forceOnScreen="true" lockInput="true" triggerEvent="triggerEvent" triggerEventArgs="met_diggory,true" id="history" link="met_diggory">If only someone on this cursed earth could get the Jade Scarab out of that blasted ruin–the museum and I, Sir Howard Diggory, would make history!</statement>
+				<conversation event="met_diggory">
+					<exchange>
+						<question forceOnScreen="true">Do you have any artifacts for the museum?</question>
+						<answer link="no_scarab">Only the Jade Scarab matters! Every museum's got a mummy, jars, all sorts of cat statues!</answer>
+					</exchange>
+					<exchange>
+						<question forceOnScreen="true">What's gone wrong, exactly?</question>
+						<answer forceOnScreen="true" link="spooked">Exactly everything has gone wrong! The excavation flooded, the digger's stuck, as is the tow truck, and the backup digger is lost in the blessed desert!</answer>
+					</exchange>
+					<exchange>
+						<question forceOnScreen="true">So you think it's cursed?</question>
+						<answer link="wrong">I'm a man of science and history! A curse is poppycock!</answer>
+					</exchange>
+				</conversation>
+				<statement id="no_scarab">No Scarab, no exhibit!</statement>
+				<statement id="spooked">The villagers are spooked and everything my foreman attempts to remedy our situation is thwarted!</statement>
+				<statement id="wrong">And yet... How else could so much go so wrong?</statement>
+				<statement event="tomb_opened">Well, get in there!</statement>
+				<statement event="seen_cave_in" link="cave_in">Well! What did you find?!</statement>
+				<conversation id="cave_in">
+					<exchange>
+						<question>I got in there, but a cave-in is blocking the next chamber.</question>
+						<answer link="vast">There's another digger! ...but the shipment was lost out in the desert...</answer>
+					</exchange>
+				</conversation>
+				<statement id="vast" triggerEvent="triggerEvent" triggerEventArgs="if_only">The desert is vast. If only there was a way for you to survey the desert quickly!</statement>
+				<statement event="if_only">I say, if only we could scour the desert to find the lost digger!</statement>
+				<statement lockInput="true" event="returned_digger" link="scuba">I say! What a stroke of luck finding that equipment!</statement>
+				<conversation id="scuba">
+					<exchange>
+						<question lockInput="true">I found a bunch of weird receipts too, including one for scuba gear?</question>
+						<answer lockInput="true" link="bday">Scuba, you say? How very curious.</answer>
+					</exchange>
+				</conversation>
+				<statement lockInput="true" id="bday" link="curse">Oh! Someone must have gotten it for my birthday! It's tomorrow!</statement>
+				<statement id="curse" triggerEvent="triggerEvent" triggerEventArgs="inside,true">The surprise is ruined! Curse you, curse!</statement>
+				<statement event="inside">The foreman’s already inside digging away!</statement>
+				<conversation event="gotItem_rubbing">
+					<exchange>
+						<question>I found some hieroglyphics inside the tomb, think you can read them?</question>
+						<answer>The hieroglyphics inside the tomb predate my substantial knowledge.</answer>
+					</exchange>
+				</conversation>
+				<conversation event="opened_story_door">
+					<exchange>
+						<question>I'm looking for something... looks like a thingy with a dangly line thing with a thing on the end!</question>
+						<answer link="merchant">I say... that thingy... sounds like a merkhet!</answer>
+					</exchange>
+				</conversation>
+				<statement id="merchant">I've seen one at the old village woman's merchant stand. I knew she'd been thieving from the dig!</statement>
+			</character>
+			<character id="mechanic">
+				<statement>Truck's stuck, ground's too wet. Could be weeks to get this thing out.</statement>
+				<statement event="tomb_opened">If only the other digger wasn't lost out in the desert.</statement>
+				<statement event="returned_digger">The foreman's already digging out the cave-in inside the tomb!</statement>
+			</character>
+			<character id="foreman">
+				<conversation>
+					<exchange>
+						<question>You're the foreman right? I can help get in the tomb.</question>
+						<answer triggerEventArgs="jerk" triggerEvent="triggerEvent">I have everything sorted.</answer>
+					</exchange>
+				</conversation>
+				<conversation event="jerk">
+					<exchange>
+						<question>I bet I could get rid of that water problem.</question>
+						<answer>How 'bout you solve my problem and get rid of yourself?</answer>
+					</exchange>
+				</conversation>
+				<statement event="tomb_opened">What have you done!?</statement>
+				<conversation event="seen_cave_in">
+					<exchange>
+						<question>We need a way through the cave-in inside the tomb.</question>
+						<answer triggerEvent="triggerEvent" triggerEventArgs="curse">Well you made a fine mess of it didn't you? The digger's destroyed and the other is lost out in the desert!</answer>
+					</exchange>
+				</conversation>
+				<statement event="curse">You're the real curse, kid.</statement>
+			</character>
+			<character id="merchant">
+				<statement link="help">Welcome! Have a look at my ancient wares!</statement>
+				<conversation id="help">
+					<exchange>
+						<question>Do you have anything to help me excavate the dig site?</question>
+						<answer link="no_need_merchant" linkEntityId="player">Almost certainly, dear! Take a look!</answer>
+					</exchange>
+				</conversation>
+				<conversation event="merchant_curse">
+					<exchange>
+						<question>Do you know anything about the Jade Scarab?</question>
+						<answer>The Scarab was given to the pharaoh long ago by the gods! It brought great bounties to our ancestors.</answer>
+					</exchange>
+					<exchange>
+						<question>Do you believe in the curse?</question>
+						<answer>Talk of a curse is ridiculous! Why would you curse something you've safely buried?</answer>
+					</exchange>
+				</conversation>
+				<statement id="merkhet" link="replaced">Aw the merkhet. A tool used long ago to track the stars and tell time.</statement>
+				<statement id="replaced">It replaced the sundial, which was completely useless in the dark!</statement>
+				<statement id="item1">An idol of Bastet, a goddess and fierce protector of children.</statement>
+				<statement id="item2" link="item2b">Ta'ameya, my lunch! It's made from dried fava beans.</statement>
+				<statement id="item2b" link="bad" linkEntityId="player">You know what they say, the more you eat, the more you Toot-ankhamun!</statement>
+				<statement id="item3" link="item3b">Aw the merkhet. A tool used long ago to track the stars and tell time.</statement>
+				<statement id="item3b">It replaced the sundial at night, which was completely useless in the dark!</statement>
+				<statement id="item4" link="item4b">Ancient potters used water, mud, straw, and cow dung to make vessels like this one.</statement>
+				<statement id="item4b">Wanna sip from a 4,000 year-old dung bottle?</statement>
+				<conversation event="gotItem_rubbing">
+					<exchange>
+						<question lockInput="true">Can you read old hieroglyphics?</question>
+						<answer lockInput="true" link="old">Why? Because I’m old?!</answer>
+					</exchange>
+				</conversation>
+				<conversation event="opened_story_door">
+					<exchange>
+						<question lockInput="true" link="thought" linkEntityId="player">I'm looking for an item. Has a string and something to do with stars?</question>
+					</exchange>
+				</conversation>
+				<statement lockInput="true" id="grandson">My grandson has run off with it to try and catch that cat!</statement>
+				<conversation event="gotItem_merkhet">
+					<exchange>
+						<question lockInput="true">What is this thing with a string?</question>
+						<answer lockInput="true">A merkhet. Ancient people used it to measure the path of stars in the sky.</answer>
+					</exchange>
+				</conversation>
+				<statement lockInput="true" id="old" link="pictograms">Heh, heh. I am old! Let me see them!</statement>
+				<statement lockInput="true" id="pictograms" link="story">Hmm these aren't hieroglyphics, they're pictograms!</statement>
+				<statement lockInput="true" id="story" triggerEvent="triggerEvent" triggerEventArgs="translated_story,true" link="translated_story">They tell a story, you see, but it's out of order. It's an old story, passed down from generation to generation.</statement>
+				<statement event="translated_story" lockInput="true" link="part2">In a time of famine, the pharaoh pleaded with the gods.</statement>
+				<statement id="part2" lockInput="true" link="part3">The gods gifted the Scarab to the pharaoh and his people.</statement>
+				<statement id="part3" lockInput="true" link="part4">Overnight, life and prosperity swept the land.</statement>
+				<statement id="part4" lockInput="true">Bringing bounties of crops, livestock, and fish.</statement>
+				<conversation event="opened_story_door">
+					<exchange>
+						<question>I'm looking for an item. Has a string and something to do with stars?</question>
+						<answer link="cat">Yes, yes, the merkhet...</answer>
+					</exchange>
+				</conversation>
+				<statement id="cat" triggerEvent="triggerEvent" triggerEventArgs="look_at_kid">My grandson has run off with it to try and catch that cat!</statement>
+			</character>
+			<character id="kid">
+				<conversation>
+					<exchange>
+						<question>That stick is kind of important, would you let me return it to the ruins?</question>
+						<answer lockInput="true" triggerEvent="giveItem" triggerEventArgs="merkhet">The cat seems to have lost interest in it, so I guess so.</answer>
+					</exchange>
+				</conversation>
+			</character>
+		</dialogs>
+	</file>
+	<file path="/npcs.xml">
+		<npcs>
+			<npc id="kid">
+				<skin>
+					<gender>male</gender>
+					<skinColor>0xB7805A</skinColor>
+					<hairColor>0x3F312C</hairColor>
+					<eyeState>open</eyeState>
+					<eyes>eyes</eyes>
+					<marks>empty</marks>
+					<mouth>kid_smile</mouth>
+					<facial>empty</facial>
+					<hair>is_kid</hair>
+					<pants>is_kid</pants>
+					<shirt>is_kid</shirt>
+				</skin>
+				<position>
+					<x>1900</x>
+					<y>900</y>
+				</position>
+				<range>
+					<x>0</x>
+					<y>0</y>
+				</range>
+				<direction>left</direction>
+				<scale>.315</scale>
+			</npc>
+			<npc id="bes">
+				<skin>
+					<gender>male</gender>
+					<skinColor>0xD38E6C</skinColor>
+					<hairColor>0x553D3A</hairColor>
+					<eyeState>casual</eyeState>
+					<eyes>eyes</eyes>
+					<marks>empty</marks>
+					<mouth>15</mouth>
+					<facial>empty</facial>
+					<hair>is_bes</hair>
+					<pants>is_bes</pants>
+					<shirt>is_bes</shirt>
+				</skin>
+				<direction>right</direction>
+				<position>
+					<x>317.95</x>
+					<y>1230.3</y>
+				</position>
+				<faceSpeaker>false</faceSpeaker>
+			</npc>
+			<npc id="farmer">
+				<skin>
+					<gender>male</gender>
+					<skinColor>0x664A3C</skinColor>
+					<hairColor>0xfff6600</hairColor>
+					<eyeState>open</eyeState>
+					<eyes>eyes</eyes>
+					<mouth>prisoner4</mouth>
+					<marks>shadow2</marks>
+					<facial>scared_eyes</facial>
+					<hair>is_farmer</hair>
+					<shirt>is_farmer</shirt>
+					<pants>1</pants>
+				</skin>
+				<position>
+					<x>723</x>
+					<y>1236</y>
+				</position>
+				<range>
+					<x>0</x>
+					<y>0</y>
+				</range>
+				<direction>left</direction>
+				<faceSpeaker>false</faceSpeaker>
+			</npc>
+			<npc id="guide">
+				<skin>
+					<gender>male</gender>
+					<skinColor>0xB27256</skinColor>
+					<hairColor>0x514D4C</hairColor>
+					<eyeState>open</eyeState>
+					<eyes>eyes</eyes>
+					<mouth>claira_worry</mouth>
+					<marks>an_brokemerch</marks>
+					<hair>is_camel_guide</hair>
+					<shirt>is_camel_guide</shirt>
+					<pants>2</pants>
+				</skin>
+				<position>
+					<x>2850</x>
+					<y>1260</y>
+				</position>
+				<range>
+					<x>0</x>
+					<y>0</y>
+				</range>
+				<direction>left</direction>
+				<faceSpeaker>false</faceSpeaker>
+			</npc>
+			<npc id="fan" event="fan_invests_in_camels">
+				<skin>
+					<gender>male</gender>
+					<skinColor>0x845a47</skinColor>
+					<hairColor>0xfff6600</hairColor>
+					<eyeState>open</eyeState>
+					<eyes>eyes</eyes>
+					<marks>freckles</marks>
+					<mouth>pfool</mouth>
+					<facial>empty</facial>
+					<hair>is_camel_fan</hair>
+					<pants>is_camel_fan</pants>
+					<shirt>is_camel_fan</shirt>
+				</skin>
+				<position>
+					<x>2500</x>
+					<y>1255</y>
+				</position>
+				<range>
+					<x>0</x>
+					<y>0</y>
+				</range>
+				<direction>right</direction>
+				<faceSpeaker>false</faceSpeaker>
+			</npc>
+			<npc id="falconer">
+				<skin>
+					<gender>male</gender>
+					<skinColor>0xAD765E</skinColor>
+					<hairColor>0x442C2A</hairColor>
+					<eyeState>squint</eyeState>
+					<eyes>eyes</eyes>
+					<mouth>fisherman</mouth>
+					<marks>falconer</marks>
+					<hair>falconer</hair>
+					<shirt>is_falconer</shirt>
+					<pants>haroldmews</pants>
+				</skin>
+				<position>
+					<x>910</x>
+					<y>870</y>
+				</position>
+				<range>
+					<x>0</x>
+					<y>0</y>
+				</range>
+				<direction>right</direction>
+				<faceSpeaker>false</faceSpeaker>
+			</npc>
+			<npc id="mechanic">
+				<skin>
+					<gender>male</gender>
+					<skinColor>0x715740</skinColor>
+					<hairColor>0x161308</hairColor>
+					<eyeState>squint</eyeState>
+					<eyes>eyes</eyes>
+					<mouth>thinking</mouth>
+					<hair>jan_member_boy</hair>
+					<pants>wwworker</pants>
+					<item>wrench</item>
+					<overshirt>is_mechanic</overshirt>
+				</skin>
+				<position>
+					<x>3250</x>
+					<y>1625</y>
+				</position>
+				<range>
+					<x>0</x>
+					<y>0</y>
+				</range>
+				<direction>left</direction>
+				<faceSpeaker>false</faceSpeaker>
+			</npc>
+			<npc id="foreman">
+				<skin>
+					<gender>male</gender>
+					<skinColor>0xad765e</skinColor>
+					<hairColor>0xfff6600</hairColor>
+					<eyeState>squint</eyeState>
+					<eyes>eyes</eyes>
+					<marks>is_foreman</marks>
+					<mouth>prisoner4</mouth>
+					<hair>is_foreman</hair>
+					<pants>is_foreman</pants>
+					<shirt>is_foreman</shirt>
+				</skin>
+				<position>
+					<x>3800</x>
+					<y>1633</y>
+				</position>
+				<range>
+					<x>0</x>
+					<y>0</y>
+				</range>
+				<direction>left</direction>
+			</npc>
+			<npc id="diggory">
+				<skin>
+					<gender>male</gender>
+					<skinColor>0xF4B89F</skinColor>
+					<hairColor>0xF4C362</hairColor>
+					<eyeState>squint</eyeState>
+					<eyes>eyes</eyes>
+					<mouth>diggory_pipe</mouth>
+					<hair>is_diggory</hair>
+					<shirt>is_diggory</shirt>
+					<pants>is_diggory</pants>
+					<overshirt>egyptarch</overshirt>
+				</skin>
+				<position>
+					<x>3336</x>
+					<y>1598</y>
+				</position>
+				<range>
+					<x>0</x>
+					<y>0</y>
+				</range>
+				<direction>left</direction>
+				<faceSpeaker>false</faceSpeaker>
+			</npc>
+			<npc id="merchant">
+				<skin>
+					<gender>female</gender>
+					<skinColor>0xC6866A</skinColor>
+					<hairColor>0xfff6600</hairColor>
+					<eyeState>squint</eyeState>
+					<eyes>eyes</eyes>
+					<mouth>wkgrmpa</mouth>
+					<marks>mthbonsaiwoman</marks>
+					<facial>is_merchant</facial>
+					<shirt>is_merchant</shirt>
+					<pants>wkcharlie</pants>
+				</skin>
+				<position>
+					<x>1573</x>
+					<y>1301</y>
+				</position>
+				<range>
+					<x>0</x>
+					<y>0</y>
+				</range>
+				<direction>left</direction>
+			</npc>
+		</npcs>
+	</file>
+	<file path="/sounds.xml">
+		<sounds>
+	<sound type="music">
+		<asset fade="true" exclusiveType="true" loop="true" baseVolume=".2">genie_dance.mp3</asset>
+	</sound>
+	<sound type="effects" action="doorOpened">
+		<asset>openDoor_pushBar.mp3</asset>
+	</sound>
+	<sound action="climb" type="effects">
+		<asset allowOverlap="false" id="climb1">rope_strain_02.mp3</asset>
+		<asset allowOverlap="false" id="climb2">rope_strain_02.mp3</asset>
+	</sound>
+	<sound type="effects">
+		<asset triggeredByEvent="masked" baseVolume="2">fs_cloth_02.mp3</asset>
+		<asset triggeredByEvent="flap1" baseVolume="2">wing_flap.mp3</asset>
+		<asset triggeredByEvent="flap2" baseVolume="2">wing_flap2.mp3</asset>
+		<asset triggeredByEvent="flap3" baseVolume="2">wing_flap3.mp3</asset>
+		<asset triggeredByEvent="flap4" baseVolume="2">wing_flap.mp3</asset>
+		<asset triggeredByEvent="flap5" baseVolume="2">wing_flap2.mp3</asset>
+		<asset triggeredByEvent="flap6" baseVolume="2">wing_flap3.mp3</asset>
+		<asset triggeredByEvent="flap7" baseVolume="2">wing_flap.mp3</asset>
+		<asset triggeredByEvent="flap8" baseVolume="2">wing_flap2.mp3</asset>
+		<asset triggeredByEvent="land">fs_wood_03.mp3</asset>
+		<asset triggeredByEvent="cat1">fs_fine_sand_01.mp3</asset>
+		<asset triggeredByEvent="step1">fs_wood_plank_01.mp3</asset>
+		<asset triggeredByEvent="step2">fs_wood_plank_02.mp3</asset>
+		<asset triggeredByEvent="step3">fs_wood_plank_03.mp3</asset>
+		<asset triggeredByEvent="jump1">whoosh_06.mp3</asset>
+		<asset triggeredByEvent="leap1">whoosh_08.mp3</asset>
+		<asset triggeredByEvent="slide">cloth_slide_01.mp3</asset>
+		<asset triggeredByEvent="jump2">ls_bounce_01.mp3</asset>
+		<asset triggeredByEvent="cloth">fs_cloth_01.mp3</asset>
+		<asset triggeredByEvent="jump3">ls_bounce_03.mp3</asset>
+		<asset triggeredByEvent="leap2">whoosh_09.mp3</asset>
+		<asset triggeredByEvent="cat2">fs_fine_sand_02.mp3</asset>
+		<asset triggeredByEvent="leap3">whoosh_08.mp3</asset>
+		<asset triggeredByEvent="boink">spring_low_1.mp3</asset>
+		<asset triggeredByEvent="leap4">whoosh_06.mp3</asset>
+		<asset triggeredByEvent="wood1">Landing_hardWood.mp3</asset>
+		<asset triggeredByEvent="leap5">whoosh_08.mp3</asset>
+		<asset triggeredByEvent="wood2">Landing_hardWood_02.mp3</asset>
+		<asset triggeredByEvent="leap6">arrow_whoosh_01.mp3</asset>
+		<asset triggeredByEvent="cloth2" baseVolume=".2">cloth_flap_02.mp3</asset>
+		<asset triggeredByEvent="jump4">ls_bounce_01.mp3</asset>
+		<asset triggeredByEvent="leap7">whoosh_09.mp3</asset>
+		<asset triggeredByEvent="boink2">pop_04.mp3</asset>
+		<asset triggeredByEvent="boink3">pop_05.mp3</asset>
+		<asset triggeredByEvent="boink4">pop_04.mp3</asset>
+		<asset triggeredByEvent="boink5">pop_05.mp3</asset>
+		<asset triggeredByEvent="boink6">pop_04.mp3</asset>
+		<asset triggeredByEvent="rise">cartoon_rise.mp3</asset>
+		<asset triggeredByEvent="fall">cartoon_fall.mp3</asset>
+		<asset triggeredByEvent="gallop">gallop1.mp3</asset>
+		<asset triggeredByEvent="camel1">gallop2.mp3</asset>
+		<asset triggeredByEvent="smack1">blunt_hit_01.mp3</asset>
+		<asset triggeredByEvent="sip1">drinking_01.mp3</asset>
+		<asset triggeredByEvent="slump">camel1.mp3</asset>
+		<asset triggeredByEvent="camel2">gallop2.mp3</asset>
+		<asset triggeredByEvent="smack2">blunt_hit_03.mp3</asset>
+		<asset triggeredByEvent="sip2">pour_water_on_dirt_01.mp3</asset>
+		<asset triggeredByEvent="slump2">camel2.mp3</asset>
+		<asset triggeredByEvent="camel3">gallop2.mp3</asset>
+		<asset triggeredByEvent="smack3">blunt_hit_01.mp3</asset>
+		<asset triggeredByEvent="sip3">straw_slurp.mp3</asset>
+		<asset triggeredByEvent="slump3">camel3.mp3</asset>
+		<asset triggeredByEvent="crack">glass_crack_02.mp3</asset>
+		<asset triggeredByEvent="engine_on" baseVolume="1.5">jade_truck.mp3</asset>
+	</sound>
+	<sound type="effects" action="impact">
+		<asset id="water">ls_water_splash_01.mp3,ls_water_splash_02.mp3</asset>
+		<asset id="trees">ls_leaves_01.mp3,ls_leaves_02.mp3</asset>
+		<asset id="hay">ls_grass_01.mp3,ls_grass_02.mp3</asset>
+		<asset id="metal">ls_general_metal_01.mp3,ls_general_metal_02.mp3</asset>
+		<asset id="clay">ls_clay_tile_01.mp3,ls_clay_tile_02.mp3</asset>
+		<asset id="sand">ls_sand_01.mp3,ls_sand_02.mp3</asset>
+		<asset id="bounce">ls_bounce_01.mp3,ls_bounce_02.mp3,ls_bounce_03.mp3</asset>
+		<asset id="wood">ls_wood_plank_01.mp3, ls_wood_plank_02.mp3</asset>
+		<asset id="baseGround">ls_pond_water_splash_01.mp3, ls_pond_water_splash_02.mp3</asset>
+	</sound>
+	<sound type="effects" action="step">
+		<asset id="water">fs_water_01.mp3,fs_water_02.mp3,fs_water_03.mp3,fs_water_04.mp3,fs_swim_water_01.mp3,fs_swim_water_02.mp3,fs_swim_water_03.mp3</asset>
+		<asset id="trees">fs_leaves_01.mp3,fs_leaves_02.mp3,fs_leaves_03.mp3,fs_leaves_04.mp3</asset>
+		<asset id="hay">fs_grass_01.mp3,fs_grass_02.mp3,fs_grass_03.mp3,fs_grass_04.mp3</asset>
+		<asset id="metal">fs_general_metal_01.mp3,fs_general_metal_02.mp3,fs_general_metal_03.mp3,fs_general_metal_04.mp3</asset>
+		<asset id="clay">fs_clay_tile_01.mp3,fs_clay_tile_02.mp3,fs_clay_tile_03.mp3,fs_clay_tile_04.mp3</asset>
+		<asset id="sand">fs_sand_01.mp3,fs_sand_02.mp3,fs_sand_03.mp3,fs_sand_04.mp3</asset>
+		<asset id="wood">fs_wood_plank_01.mp3, fs_wood_plank_02.mp3, fs_wood_plank_03.mp3, fs_wood_plank_04.mp3</asset>
+		<asset id="baseGround">fs_pond_water_01.mp3, fs_pond_water_02.mp3, fs_pond_water_03.mp3, fs_pond_water_04.mp3</asset>
+	</sound>
+</sounds>
+	</file>
+	<file path="/scene.xml">
+		<scene>
+			<sceneType>default</sceneType>
+			<cameraLimits>
+				<left>0</left>
+				<top>0</top>
+				<right>3950</right>
+				<bottom>1970</bottom>
+			</cameraLimits>
+			<bounds>
+				<left>0</left>
+				<top>0</top>
+				<right>3950</right>
+				<bottom>1970</bottom>
+			</bounds>
+			<data>dialog.xml,doors.xml,npcs.xml,sounds.xml,hits.xml,vendor_cart.xml</data>
+			<assets>bundle.zip</assets>
+			<layers>
+				<layer>
+					<asset>background.zip</asset>
+				</layer>
+				<layer hit="true">
+					<asset>bitmap_hits.zip</asset>
+				</layer>
+				<layer hit="true">
+					<asset>interactive.zip</asset>
+				</layer>
+			</layers>
+			<player>
+				<defaultPosition>
+					<x>224</x>
+					<y>1228</y>
+				</defaultPosition>
+				<defaultDirection>right</defaultDirection>
+			</player>
+		</scene>
+	</file>
+	<file path="/doors.xml">
+		<doors>
+		<door id="door_1">
+				<scene>game.scenes.jadeScarab.adStreet.AdStreet</scene>
+				<x>2000</x>
+				<y>980</y>
+				<direction>left</direction>
+				<label>
+					<text>Go Back</text>
+					<type>exitLeft</type>
+					<offset>
+						<x>0</x>
+						<y>0</y>
+					</offset>
+				</label>
+			</door>
+			<!-- would like to associate art with this door so they both can appear at the same time-->
+			<door id="door_gate" event="tomb_opened" triggeredByEvent="tomb_opened">
+				<scene>game.scenes.jadeScarab.tombEntrance.TombEntrance</scene>
+				<x>450</x>
+				<y>690</y>
+				<label>
+					<text>Enter</text>
+					<type>exit3D</type>
+					<offset>
+						<x>0</x>
+						<y>0</y>
+					</offset>
+				</label>
+			</door>
+		</doors>
+	</file>
+
+</merged>

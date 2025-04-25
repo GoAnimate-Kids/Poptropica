@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Play Poptropica</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background-color: #157cf9;
+      overflow: hidden;
+    }
+    .container {
+      position: relative;
+      width: 960px;
+      height: 540px;
+      margin: 40px auto;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .logo {
+      margin-top: 30px;
+      margin-bottom: 20px;
+      height: auto;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="pop_logo.png" alt="Poptropica Logo" class="logo">
+    <iframe
+      src="iframe-login.html"
+      allow="accelerometer; gyroscope; clipboard-read; clipboard-write; web-share"
+      title="Poptropica Game"
+	  scrolling="no"
+    ></iframe>
+  </div>
+
+  <script async>
+    window.addEventListener("devicemotion", (event) => {
+      console.log("DeviceMotion event fired:", event);
+    });
+
+    window.addEventListener("deviceorientation", (event) => {
+      console.log("DeviceOrientation event fired:", event);
+    });
+  </script>
+</body>
+</html>
